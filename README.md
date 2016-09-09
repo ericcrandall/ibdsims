@@ -1,3 +1,7 @@
+---
+title: "README.md"
+output: html_document
+---
 # Simulating and Analyzing Marine Isolation By Distance Models
 This is an open notebook of my endeavors to simulate gene flow and demography in a marine system, and then analyze the results with various methods to see how they perform. I am using [IBDsim](http://www1.montpellier.inra.fr/CBGP/software/ibdsim/) for the simulations.
 
@@ -64,51 +68,4 @@ New_Demographic_Phase_At = 10000
 Lattice_SizeX = 10
 Ind_Per_Pop = 1000
 ```
-Now read in som msat data and play with it.
 
-```{r, echo=F}
-library("hierfstat")
-library("adegenet")
-library("pegas")
-
-# see http://adegenet.r-forge.r-project.org/files/tutorial-basics.pdf
-
-msat<-read.genepop("./pareto2_msats/pareto2_1.gen",ncode=3L)
-
-print("overall FST")
-fstat(msat)
-print("locus-wise FST")
-Fst(as.loci(msat))
-print("pairwise FST")
-pfstmsat<-pairwise.fst(msat)
-pfstmsat
-
-print("PCA")
-#msatscaled<-scaleGen(msat)
-pca1 <- dudi.pca(msat,cent=FALSE,scale=TRUE,scannf=FALSE,nf=3)
-#barplot(pca1$eig[1:50],main="PCA eigenvalues", col=heat.colors(50))
-#s.label(pca1$li)
-#add.scatter.eig(pca1$eig[1:20], 3,1,2)
-#s.class(pca1$li, pop(msat))
-#add.scatter.eig(pca1$eig[1:20], 3,1,2)
-col<-funky(15)
-s.class(pca1$li, pop(msat),xax=1,yax=2, col=transp(col,.6), axesell=FALSE,
-        cstar=0, cpoint=3, grid=TRUE)
-        
-        
-print("Isolation-By-Distance")
-msatpop<-genind2genpop(msat)
-
-#read in locations on the lattice
-latdists<-read.table("distances.txt")
-latdists<-dist(latdists)
-
-ibd<-mantel.randtest(pfstmsat,latdists)
-ibd
-plot(latdists, pfstmsat)
-abline(lm(pfstmsat~latdists))
-plot(ibd)
-
-        
-        
-```
