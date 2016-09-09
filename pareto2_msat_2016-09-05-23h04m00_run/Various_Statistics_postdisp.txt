@@ -1,0 +1,15 @@
+run: pareto2_ with 10 simulated data files of 10 loci;
+MRCA MOY (total sample) = 34560.090000
+MRCA MAX (total sample) = 101956
+Monomorphs (total sample) = 0.000000
+tooManyMut (total sample) = 0.000000
+Mean within-deme identity prob. (within-individual for cont. pop.) Q0= 0.127605000000;
+Mean between-deme identity prob. (within-pop for cont. pop.) Q1=  0.12644022 
+Mean identity prob. for genes at  0 steps (Qr 0) = 0.126623076923;
+Mean intra-deme coalescence time (total sample) = 17783.62365000
+Mean Observed heterozygosity =  0.87239500
+Mean genetic diversity (Nei Expected Heterozygosity) and SE =  0.87131487 (+-  0.01831121))
+Mean Variance of allelic size and SE = 183.37723252 (+- 36.74404948))
+Mean M statistic (Garza & Williamson 2001) and SE =  0.30769752 (+-  0.01022109))
+Mean Fst (Fis for cont. pop.) =  0.00134440 
+Mean Fst (Fis for cont. pop.) calculated as mean_num/mean_denom =  0.00133337
