@@ -18,7 +18,7 @@ library("ape")
 ```{r, echo=F}
 #https://arundurvasula.wordpress.com/2016/02/24/haplotype-networks-in-r/
 
-c <- ape::read.nexus.data("./pareto2_mtdnas/pareto2_AllIndividuals_rep1_loc8.nex")
+c <- ape::read.nexus.data("./pareto2_mtdnas/pareto2_AllIndividuals_rep1_loc2.nex")
 d <- as.DNAbin(c)
 e <- dist.dna(d)
 h <- pegas::haplotype(d)
@@ -28,6 +28,7 @@ net <- pegas::haploNet(h)
 i<-stack(setNames(attr(h, "index"), rownames(h)))
 ind.hap<- table(hap=i$ind, pop=pop)
 plot(net, size=attr(net, "freq"), scale.ratio=0.2, pie=ind.hap)
-legend(-100, -40, colnames(ind.hap), col=rainbow(ncol(ind.hap)), pch=19, ncol=2)
+legend(-1000, -40, colnames(ind.hap), col=rainbow(ncol(ind.hap)), pch=19, ncol=2)
 ```
 
+#maybe convert to gtypes with pop as populations, then write to arlequin format, then convert to migrate format...
