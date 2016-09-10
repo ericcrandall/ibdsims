@@ -72,53 +72,54 @@ Ind_Per_Pop = 1000
 Submitted three rounds of three replicate migrate runs for the msat dataset. Each round contains seven models, a stepping stone model, a single parameter stepping stone and an island model all 10 sampled demes as well as demes lumped into twos.
 
 ```
-[sgulamhu@campusrocks3 ~/migrate_ibdsim]$ ../submitter_all_ibd.sh
-
+[sgulamhu@campusrocks3 ~/migrate_ibdsim1]$ ../submitter_all_ibd.sh
 10island/
-Your job 1064 ("migrate") has been submitted
+Your job 1109 ("migrate") has been submitted
 10stepping.stone/
-Your job 1065 ("migrate") has been submitted
+Your job 1110 ("migrate") has been submitted
 10stepping.stone1/
-Your job 1066 ("migrate") has been submitted
+Your job 1111 ("migrate") has been submitted
 5island/
-Your job 1067 ("migrate") has been submitted
+Your job 1112 ("migrate") has been submitted
 5stepping.stone/
-Your job 1068 ("migrate") has been submitted
+Your job 1113 ("migrate") has been submitted
 5stepping.stone1/
-Your job 1069 ("migrate") has been submitted
+Your job 1114 ("migrate") has been submitted
 panmixia/
-Your job 1070 ("migrate") has been submitted
+Your job 1115 ("migrate") has been submitted
 done submitting 7 runs
-
+[sgulamhu@campusrocks3 ~/migrate_ibdsim1]$ cd ../migrate_ibdsim2
+[sgulamhu@campusrocks3 ~/migrate_ibdsim2]$ ../submitter_all_ibd.sh
 10island/
-Your job 1071 ("migrate") has been submitted
+Your job 1116 ("migrate") has been submitted
 10stepping.stone/
-Your job 1072 ("migrate") has been submitted
+Your job 1117 ("migrate") has been submitted
 10stepping.stone1/
-Your job 1073 ("migrate") has been submitted
+Your job 1118 ("migrate") has been submitted
 5island/
-Your job 1074 ("migrate") has been submitted
+Your job 1119 ("migrate") has been submitted
 5stepping.stone/
-Your job 1075 ("migrate") has been submitted
+Your job 1120 ("migrate") has been submitted
 5stepping.stone1/
-Your job 1076 ("migrate") has been submitted
+Your job 1121 ("migrate") has been submitted
 panmixia/
-Your job 1077 ("migrate") has been submitted
+Your job 1122 ("migrate") has been submitted
 done submitting 7 runs
-
+[sgulamhu@campusrocks3 ~/migrate_ibdsim2]$ cd ../migrate_ibdsim3
+[sgulamhu@campusrocks3 ~/migrate_ibdsim3]$ ../submitter_all_ibd.sh
 10island/
-Your job 1078 ("migrate") has been submitted
+Your job 1123 ("migrate") has been submitted
 10stepping.stone/
-Your job 1079 ("migrate") has been submitted
+Your job 1124 ("migrate") has been submitted
 10stepping.stone1/
-Your job 1080 ("migrate") has been submitted
+Your job 1125 ("migrate") has been submitted
 5island/
-Your job 1081 ("migrate") has been submitted
+Your job 1126 ("migrate") has been submitted
 5stepping.stone/
-Your job 1082 ("migrate") has been submitted
+Your job 1127 ("migrate") has been submitted
 5stepping.stone1/
-Your job 1083 ("migrate") has been submitted
+Your job 1128 ("migrate") has been submitted
 panmixia/
-Your job 1084 ("migrate") has been submitted
+Your job 1129 ("migrate") has been submitted
 done submitting 7 runs
 ```
