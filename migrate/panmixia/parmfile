@@ -474,7 +474,7 @@ bayes-allfile=YES:1:bayesallfile
 bayes-proposals= THETA METROPOLIS Sampler
 bayes-proposals= MIG SLICE Sampler
 bayes-priors= THETA WEXPPRIOR: 0.0 1 100.000000 10.0000 
-bayes-priors= MIG WEXPPRIOR: 0.000100 10.000000 1000.000000 100.000000 
+bayes-priors= MIG WEXPPRIOR: 0.000100 10.000000 10000.000000 1000.000000 
 #
 long-chains=1
 long-inc=100
