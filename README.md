@@ -92,26 +92,26 @@ done submitting 7 runs
 [sgulamhu@campusrocks3 ~/migrate_ibdsim4]$ cd ../migrate_ibdsim5
 [sgulamhu@campusrocks3 ~/migrate_ibdsim5]$ ../submitter_all_ibd.sh
 10island/
-Your job 1352 ("migrate") has been submitted
+Your job 1856 ("migrate") has been submitted
 10stepping.stone/
 Your job 1353 ("migrate") has been submitted
 10stepping.stone1/
-Your job 1354 ("migrate") has been submitted
+Your job 1854 ("migrate") has been submitted
 5island/
-Your job 1355 ("migrate") has been submitted
+Your job 1855 ("migrate") has been submitted
 5stepping.stone/
 Your job 1356 ("migrate") has been submitted
 5stepping.stone1/
-Your job 1357 ("migrate") has been submitted
+Your job 1853 ("migrate") has been submitted
 panmixia/
 Your job 1358 ("migrate") has been submitted
 done submitting 7 runs
 
 [sgulamhu@campusrocks3 ~/migrate_ibdsim6]$ ../submitter_all_ibd.sh
 10island/
-Your job 1359 ("migrate") has been submitted
+Your job 1857 ("migrate") has been submitted
 10stepping.stone/
-Your job 1360 ("migrate") has been submitted
+Your job 1858 ("migrate") has been submitted
 10stepping.stone1/
 Your job 1361 ("migrate") has been submitted
 5island/
