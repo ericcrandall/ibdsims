@@ -1,0 +1,131 @@
+[2J[1;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[2J[1;1H[2J[1;1H[1;1H================================================================
+This is IBDSim v2.0 (Leblois et al. 2009 MolEcol Ressources) for the
+simulation of genetic data under isolation by distance models
+based in the algorithms described in Leblois et al. 2003 MBE,
+Leblois et al. 2004 Genetics, Leblois et al. 2006 MolEcol
+================================================================
+Summary settings: generic file name is singlepop_;
+Mutational model is GSM 
+Simulation of 10 data set(s) each containing 10 locus;
+Sample: (1 x 1) * 200 = 200 diploid individuals
+evolving at G=0 on a 1 x 1 lattice with absorbing boundaries
+where each node has 1000000 individuals
+Dispersal settings are summarized in the 'simul_pars.txt' file 
+================================================================
+[17;1HDataset:          Locus:[17;9H1   [17;26H1   
+[17;26H2   
+[17;26H3   
+[17;26H4   
+[17;26H5   
+[17;26H6   
+[17;26H7   
+[17;26H8   
+[17;26H9   
+[17;26H10   
+[17;9H2   [17;26H1   
+[17;26H2   
+[17;26H3   
+[17;26H4   
+[17;26H5   
+[17;26H6   
+[17;26H7   
+[17;26H8   
+[17;26H9   
+[17;26H10   
+[17;9H3   [17;26H1   
+[17;26H2   
+[17;26H3   
+[17;26H4   
+[17;26H5   
+[17;26H6   
+[17;26H7   
+[17;26H8   
+[17;26H9   
+[17;26H10   
+[17;9H4   [17;26H1   
+[17;26H2   
+[17;26H3   
+[17;26H4   
+[17;26H5   
+[17;26H6   
+[17;26H7   
+[17;26H8   
+[17;26H9   
+[17;26H10   
+[17;9H5   [17;26H1   
+[17;26H2   
+[17;26H3   
+[17;26H4   
+[17;26H5   
+[17;26H6   
+[17;26H7   
+[17;26H8   
+[17;26H9   
+[17;26H10   
+[17;9H6   [17;26H1   
+[17;26H2   
+[17;26H3   
+[17;26H4   
+[17;26H5   
+[17;26H6   
+[17;26H7   
+[17;26H8   
+[17;26H9   
+[17;26H10   
+[17;9H7   [17;26H1   
+[17;26H2   
+[17;26H3   
+[17;26H4   
+[17;26H5   
+[17;26H6   
+[17;26H7   
+[17;26H8   
+[17;26H9   
+[17;26H10   
+[17;9H8   [17;26H1   
+[17;26H2   
+[17;26H3   
+[17;26H4   
+[17;26H5   
+[17;26H6   
+[17;26H7   
+[17;26H8   
+[17;26H9   
+[17;26H10   
+[17;9H9   [17;26H1   
+[17;26H2   
+[17;26H3   
+[17;26H4   
+[17;26H5   
+[17;26H6   
+[17;26H7   
+[17;26H8   
+[17;26H9   
+[17;26H10   
+[17;9H10   [17;26H1   
+[17;26H2   
+[17;26H3   
+[17;26H4   
+[17;26H5   
+[17;26H6   
+[17;26H7   
+[17;26H8   
+[17;26H9   
+[17;26H10   
+
+
+Various statistics on the genetic sample (postdisp)
+Mean within-deme identity prob. (within-individual for cont. pop.) = 0.12933250
+Mean observed heterozygosity within demes / individuals for cont. pop. = 0.87066750
+Mean between-deme identity prob. (within-pop for a cont. pop.)= 0.00000000 
+ 
+HexpNei= 0.86810975 (+-  0.01836709)
+Var=171.12850432 (+- 35.16017677)
+M= 0.30581663 (+-  0.01013918)
+Mean Fst (Fis for cont. pop.)= 0.00000000 
+
+
+
+
+Normal ending of IBDSim (Total computation time is 5.176728 seconds)
+

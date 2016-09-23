@@ -1,0 +1,15 @@
+run: singlepop_ with 10 simulated data files of 10 loci;
+MRCA MOY (total sample) = 39464.680000
+MRCA MAX (total sample) = 126622
+Monomorphs (total sample) = 0.000000
+tooManyMut (total sample) = 0.000000
+Mean within-deme identity prob. (within-individual for cont. pop.) Q0= 0.129332500000;
+Mean between-deme identity prob. (within-pop for cont. pop.) Q1=  0.00000000 
+Mean identity prob. for genes at  0 steps (Qr 0) = 0.129714536341;
+Mean intra-deme coalescence time (total sample) = 20229.24030000
+Mean Observed heterozygosity =  0.87066750
+Mean genetic diversity (Nei Expected Heterozygosity) and SE =  0.86810975 (+-  0.01836709))
+Mean Variance of allelic size and SE = 171.12850432 (+- 35.16017677))
+Mean M statistic (Garza & Williamson 2001) and SE =  0.30581663 (+-  0.01013918))
+Mean Fst (Fis for cont. pop.) =  0.00000000 
+Mean Fst (Fis for cont. pop.) calculated as mean_num/mean_denom =         nan

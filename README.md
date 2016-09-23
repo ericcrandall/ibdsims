@@ -124,4 +124,21 @@ panmixia/
 Your job 1365 ("migrate") has been submitted
 done submitting 7 runs
 
+[sgulamhu@campusrocks3 ~/migrate_singlepop1]$ ../submitter_all_ibd.sh
+10island/
+Your job 2556 ("migrate") has been submitted
+10stepping.stone/
+Your job 2557 ("migrate") has been submitted
+10stepping.stone1/
+Your job 2558 ("migrate") has been submitted
+5island/
+Your job 2559 ("migrate") has been submitted
+5stepping.stone/
+Your job 2560 ("migrate") has been submitted
+5stepping.stone1/
+Your job 2561 ("migrate") has been submitted
+panmixia/
+Your job 2562 ("migrate") has been submitted
+done submitting 7 runs
+
 ```
