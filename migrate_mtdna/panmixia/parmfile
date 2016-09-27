@@ -1,7 +1,7 @@
 ################################################################################
 # Parmfile for Migrate 3.6.4- [do not remove these first TWO lines]
 # generated automatically on
-# Fri Sep  2 20:31:13 2016
+# Mon Sep 26 18:29:51 2016
 #
 # please report problems to Peter Beerli
 #  email: beerli@fsu.edu
@@ -130,10 +130,18 @@ nmlength=10
 #-------------------------------------------------------------------------------
 #
 #
-datatype=BrownianMicrosatelliteData
-include-unknown=NO
-inheritance-scalars={1.00000000000000000000}
-population-relabel={1 1 1 1 1 1 1 1 1 1}
+datatype=SequenceData
+ttratio=1.000000 
+freqs-from-data=YES
+seqerror-rate=0.000000
+categories=1 #no categories file specified
+rates=1: 1.000000 
+prob-rates=1: 1.000000 
+autocorrelation=NO
+weights=NO
+interleaved=NO
+fast-likelihood=NO
+inheritance-scalars={1}population-relabel={1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 usertree=RANDOMTREE
 #
 ################################################################################
@@ -142,14 +150,14 @@ usertree=RANDOMTREE
 #
 # input file location
 #   Syntax infile=FILEPATH
-infile=../../ibddata/singlepop_m1.txt
+infile=../../ibddata/pareto2_mtDNA.txt
 #
 # Random number seed specification
 #   Syntax random-seed=<AUTO | OWN:< seedfile | value >
 #      AUTO           uses computer system clock to generate seed
 #      OWN:seedfile   uses file seedfile with random number seed
 #      OWN:value      uses number value for seed
-random-seed=AUTO #OWN:368218354
+random-seed=AUTO #OWN:368734898
 #
 # Specify the title of the run, will be overridden by title in datafile
 #    Syntax: title=title text [up to 80 characters]
@@ -331,8 +339,8 @@ skyline=NO #needs mig-histogram=ALL:...
 #           {mean std} with mean and standard deviation
 #        URANDOM  starting parameter is drawn randomely from a Uniform distribution
 #           {min max} with minimum and maximum values
-theta=OWN:{0.01}
-migration=OWN:{1.0}
+
+migration=Own:1.000000
 #
 #-------------------------------------------------------------------------------
 # Mutation rate modifiers
@@ -471,15 +479,16 @@ bayes-posteriorbins=1500 1500
 bayes-posteriormaxtype=TOTAL
 bayes-file=YES:bayesfile
 bayes-allfile=YES:1:bayesallfile
-bayes-proposals= THETA METROPOLIS Sampler
+bayes-proposals= THETA METROPOLIS-HASTINGS Sampler
 bayes-proposals= MIG SLICE Sampler
-bayes-priors= THETA WEXPPRIOR: 0.0 1 100.000000 10.0000 
-bayes-priors= MIG WEXPPRIOR: 0.000100 10.000000 10000.000000 1000.000000 
+bayes-priors= THETA WEXPPRIOR: 0.000000 0.1000000 10.000000 1.000000 
+bayes-priors= MIG WEXPPRIOR: 0.000100 10000.000000 1000000.000000 10000.000000
 #
 long-chains=1
 long-inc=100
-long-sample=5000
+long-sample=25000
 burn-in=10000  
+auto-tune=YES:0.440000
 #
 #-------------------------------------------------------------------------------
 # Schemes to improve MCMC searching and/or thermodynamic integration
@@ -497,7 +506,7 @@ burn-in=10000
 #         YES  swapping of chains enabled [DEFAULT]
 #         NO   swapping of chains disabled
 #      Example: heated-swap=YES
-heating=YES:1:{1.000000,1.500000,3.000000,6.0,12.0,1000000.000000}
+heating=YES:1:{1.000000,1.500000,3.000000,6.000000,12.000000,1000000.000000}
 heated-swap=YES
 #
 # Lengthening chain schemes

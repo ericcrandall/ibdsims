@@ -130,9 +130,18 @@ nmlength=10
 #-------------------------------------------------------------------------------
 #
 #
-datatype=BrownianMicrosatelliteData
-include-unknown=NO
-inheritance-scalars={1.00000000000000000000}
+datatype=SequenceData
+ttratio=1.000000 
+freqs-from-data=YES
+seqerror-rate=0.000000
+categories=1 #no categories file specified
+rates=1: 1.000000 
+prob-rates=1: 1.000000 
+autocorrelation=NO
+weights=NO
+interleaved=NO
+fast-likelihood=NO
+inheritance-scalars={1}
 population-relabel={1 1 2 2 3 3 4 4 5 5}
 usertree=RANDOMTREE
 #
@@ -142,7 +151,7 @@ usertree=RANDOMTREE
 #
 # input file location
 #   Syntax infile=FILEPATH
-infile=../../ibddata/singlepop_m1.txt
+infile=../../ibddata/pareto2_mtDNA.txt
 #
 # Random number seed specification
 #   Syntax random-seed=<AUTO | OWN:< seedfile | value >
@@ -473,12 +482,12 @@ bayes-file=YES:bayesfile
 bayes-allfile=YES:1:bayesallfile
 bayes-proposals= THETA METROPOLIS Sampler
 bayes-proposals= MIG SLICE Sampler
-bayes-priors= THETA WEXPPRIOR: 0.0 1 100.000000 10.0000 
-bayes-priors= MIG WEXPPRIOR: 0.000100 10.000000 10000.000000 1000.000000 
+bayes-priors= THETA WEXPPRIOR: 0.000000 0.1000000 10.000000 1.000000 
+bayes-priors= MIG WEXPPRIOR: 0.000100 10000.000000 1000000.000000 10000.000000 
 #
 long-chains=1
 long-inc=100
-long-sample=5000
+long-sample=25000
 burn-in=10000  
 #
 #-------------------------------------------------------------------------------

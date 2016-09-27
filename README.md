@@ -141,4 +141,74 @@ panmixia/
 Your job 2562 ("migrate") has been submitted
 done submitting 7 runs
 
+[sgulamhu@campusrocks3 ~/migrate_mtdna_ibdsim1]$ ../submitter_all_ibd.sh
+10island/
+Your job 3010 ("migrate") has been submitted
+10stepping.stone/
+Your job 3011 ("migrate") has been submitted
+10stepping.stone1/
+Your job 3012 ("migrate") has been submitted
+5island/
+Your job 3013 ("migrate") has been submitted
+5stepping.stone/
+Your job 3014 ("migrate") has been submitted
+5stepping.stone1/
+Your job 3015 ("migrate") has been submitted
+panmixia/
+Your job 3016 ("migrate") has been submitted
+done submitting 7 runs
+
+[sgulamhu@campusrocks3 ~/migrate_mtdna_ibdsim1]$ ../submitter_all_ibd.sh
+10island/
+Your job 3010 ("migrate") has been submitted
+10stepping.stone/
+Your job 3011 ("migrate") has been submitted
+10stepping.stone1/
+Your job 3012 ("migrate") has been submitted
+5island/
+Your job 3013 ("migrate") has been submitted
+5stepping.stone/
+Your job 3014 ("migrate") has been submitted
+5stepping.stone1/
+Your job 3015 ("migrate") has been submitted
+panmixia/
+Your job 3016 ("migrate") has been submitted
+done submitting 7 runs
+
+[sgulamhu@campusrocks3 ~/migrate_mtdna_ibdsim2]$ ../submitter_all_ibd.sh
+10island/
+Your job 3018 ("migrate") has been submitted
+10stepping.stone/
+Your job 3019 ("migrate") has been submitted
+10stepping.stone1/
+Your job 3020 ("migrate") has been submitted
+5island/
+Your job 3021 ("migrate") has been submitted
+5stepping.stone/
+Your job 3022 ("migrate") has been submitted
+5stepping.stone1/
+Your job 3023 ("migrate") has been submitted
+panmixia/
+Your job 3024 ("migrate") has been submitted
+done submitting 7 runs
+
+[sgulamhu@campusrocks3 ~/migrate_mtdna_ibdsim3]$ ../submitter_all_ibd.sh
+10island/
+Your job 3026 ("migrate") has been submitted
+10stepping.stone/
+Your job 3027 ("migrate") has been submitted
+10stepping.stone1/
+Your job 3028 ("migrate") has been submitted
+5island/
+Your job 3029 ("migrate") has been submitted
+5stepping.stone/
+Your job 3030 ("migrate") has been submitted
+5stepping.stone1/
+Your job 3031 ("migrate") has been submitted
+panmixia/
+Your job 3032 ("migrate") has been submitted
+done submitting 7 runs
+
+
+
 ```
