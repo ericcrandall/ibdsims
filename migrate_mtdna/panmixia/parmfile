@@ -141,7 +141,8 @@ autocorrelation=NO
 weights=NO
 interleaved=NO
 fast-likelihood=NO
-inheritance-scalars={1}population-relabel={1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+inheritance-scalars={1}
+population-relabel={1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 usertree=RANDOMTREE
 #
 ################################################################################
@@ -150,7 +151,7 @@ usertree=RANDOMTREE
 #
 # input file location
 #   Syntax infile=FILEPATH
-infile=../../ibddata/pareto2_mtDNA.txt
+infile=../../ibddata/singlepop_mtDNA.txt
 #
 # Random number seed specification
 #   Syntax random-seed=<AUTO | OWN:< seedfile | value >

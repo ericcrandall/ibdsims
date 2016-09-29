@@ -77,7 +77,7 @@ Submitted three rounds of three replicate migrate runs for the msat dataset. Eac
 10island/
 Your job 1345 ("migrate") has been submitted
 10stepping.stone/
-Your job 1859 ("migrate") has been submitted
+Your job 3217 ("migrate") has been submitted
 10stepping.stone1/
 Your job 1347 ("migrate") has been submitted
 5island/
@@ -92,13 +92,13 @@ done submitting 7 runs
 [sgulamhu@campusrocks3 ~/migrate_ibdsim4]$ cd ../migrate_ibdsim5
 [sgulamhu@campusrocks3 ~/migrate_ibdsim5]$ ../submitter_all_ibd.sh
 10island/
-Your job 1856 ("migrate") has been submitted
+Your job 3219 ("migrate") has been submitted
 10stepping.stone/
 Your job 1353 ("migrate") has been submitted
 10stepping.stone1/
 Your job 2553 ("migrate") has been submitted
 5island/
-Your job 1855 ("migrate") has been submitted
+Your job 3218 ("migrate") has been submitted
 5stepping.stone/
 Your job 1356 ("migrate") has been submitted
 5stepping.stone1/
@@ -128,7 +128,7 @@ done submitting 7 runs
 10island/
 Your job 2556 ("migrate") has been submitted
 10stepping.stone/
-Your job 2557 ("migrate") has been submitted
+Your job 3035 ("migrate") has been submitted
 10stepping.stone1/
 Your job 2558 ("migrate") has been submitted
 5island/
@@ -172,7 +172,7 @@ Your job 3014 ("migrate") has been submitted
 5stepping.stone1/
 Your job 3015 ("migrate") has been submitted
 panmixia/
-Your job 3016 ("migrate") has been submitted
+Your job 3220 ("migrate") has been submitted
 done submitting 7 runs
 
 [sgulamhu@campusrocks3 ~/migrate_mtdna_ibdsim2]$ ../submitter_all_ibd.sh
@@ -189,7 +189,7 @@ Your job 3022 ("migrate") has been submitted
 5stepping.stone1/
 Your job 3023 ("migrate") has been submitted
 panmixia/
-Your job 3024 ("migrate") has been submitted
+Your job 3221 ("migrate") has been submitted
 done submitting 7 runs
 
 [sgulamhu@campusrocks3 ~/migrate_mtdna_ibdsim3]$ ../submitter_all_ibd.sh
@@ -206,8 +206,27 @@ Your job 3030 ("migrate") has been submitted
 5stepping.stone1/
 Your job 3031 ("migrate") has been submitted
 panmixia/
-Your job 3032 ("migrate") has been submitted
+Your job 3222 ("migrate") has been submitted
 done submitting 7 runs
+
+Single Panmictic population run for mtDNA
+sgulamhu@campusrocks3 ~/migrate_mtdna_singlepop]$ ../submitter_all_ibd.sh
+10island/
+Your job 3230 ("migrate") has been submitted
+10stepping.stone/
+Your job 3231 ("migrate") has been submitted
+10stepping.stone1/
+Your job 3232 ("migrate") has been submitted
+5island/
+Your job 3233 ("migrate") has been submitted
+5stepping.stone/
+Your job 3234 ("migrate") has been submitted
+5stepping.stone1/
+Your job 3235 ("migrate") has been submitted
+panmixia/
+Your job 3236 ("migrate") has been submitted
+done submitting 7 runs
+
 
 
 
