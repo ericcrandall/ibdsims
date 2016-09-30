@@ -7,51 +7,18 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+source("/Users/eric/github/ibdsims/migrate_harvester_functions.R")
 ```
 
-## Migrate Output Analysis
-Here I will borrow and modify code that I used in the ToBo analysis to quickly look at marginal likelihoods across the seven different models that I tested using both msat and mtdna datasets.
+# Migrate Output Analysis
+#### 9/30/16
+Here I will borrow and modify code that I used in the ToBo analysis to quickly look at marginal likelihoods across the seven different models that I tested using both msat and mtdna datasets. I modified it and gave the three functions `migrate_harvester`, `bfcalcs`, and `getmodels` into their own file to be sourced.
 
 ### Harvesting the likelihoods
-Let's make this a function
-```{r harvest likelihoods}
-migrate_harvester<-function(wd,n=3,models){ #wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_mtdna_results"; n=3; models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
-  
-  setwd(wd)
-  likelists<-list() #initialize an empty list
-  
-  for(r in list.files(wd)){
-    wd1<-file.path(wd,r)
-    setwd(wd1)
-      marglike<-data.frame(model=character(0),thermodynamic=numeric(0),bezier.corrected=numeric(0),harmonic.mean=numeric(0),stringsAsFactors=F) #initialize a data frame to take the values
-      l=1 #initialize l
-      for(m in models){ #i<-"stepping.stone"
-        wd2<-file.path(wd1,m)
-        print(wd2)
-        if(!file.exists(wd2)){next}
-        setwd(wd2)
-        outfile<-scan(file="outfile",what="character",sep="\n") #scan in the outfile, separating at each newline
-        #get the result from thermodynamic integration
-        thermoline<-grep("(1a)",outfile,value=T) #find the line with the thermodynamic likelihood on it
-        if(length(thermoline)==0){next}
-        thermoline<-strsplit(thermoline,split="=",fixed=T) #split it up
-        thermo<-as.numeric(substr(thermoline[[1]][2],start=1,stop=12)) #grab the thermodynamic likelihood
-        bezistart<-grep("\\(",strsplit(thermoline[[1]][2],split="")[[1]])+1
-        bezier<-as.numeric(substr(thermoline[[1]][2],start=bezistart,stop=bezistart+11)) #and the bezier-corrected value
-        #get the harmonic mean
-        harmoline<-grep("\\(2\\) H",outfile,value=T) #find the line with harmonic mean likelihood on it
-        harmoline<-strsplit(harmoline,split="=",fixed=T) #grab the harmonic mean
-        harmo<-as.numeric(substr(harmoline[[1]][2],start=1,stop=12))
-        marglike[l,]<-c(m,thermo,bezier,harmo) #add this as a row to the data frame
-        l=l+1
-        
-      }
-    likelists[[r]]<-marglike
-  }
-  setwd(wd)
-  return(likelists)
-}
-
-```
-
-
+for mtDNA
+```{r}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_mtdna_results"
+models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
+setwd(wd)
+migrate_harvester(wd=wd,models=)
