@@ -21,4 +21,9 @@ for mtDNA
 wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_mtdna_results"
 models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
 setwd(wd)
-migrate_harvester(wd=wd,models=)
+marglikes<-migrate_harvester(wd=wd,models=models)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+
+```
+Dang, it is choosing 5island!
