@@ -17,13 +17,56 @@ Here I will borrow and modify code that I used in the ToBo analysis to quickly l
 
 ### Harvesting the likelihoods
 for mtDNA
-```{r}
+```{r mtDNA-Pareto}
 wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_mtdna_results"
 models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
+bfsum_mtdna_pareto2<-bfcalcs_reps(bftable, models=models)
+bfsum
 
 ```
 Dang, it is choosing 5island!
+
+
+```{r mtDNA-singlepop}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_singlepop_mtdna_results"
+models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+
+
+```
+Great! This chose panmixia
+
+```{r msats-Pareto}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_msats_results"
+models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+bfsum_mtdna_pareto2<-bfcalcs_reps(bftable, models=models)
+bfsum
+
+```
+
+
+
+
+
+```{r msats-singlepop}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_singlepop_msats_results"
+models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+
+
+```
+Great! This chose panmixia
