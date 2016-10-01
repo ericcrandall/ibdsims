@@ -1,4 +1,4 @@
-migrate_harvester<-function(wd,n=3,models){ #wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_mtdna_results"; n=3; models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
+migrate_harvester<-function(wd,n=3,models,multilocus=F){ #wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_mtdna_results"; n=3; models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
   
   setwd(wd)
   likelists<-list() #initialize an empty list
@@ -14,6 +14,8 @@ migrate_harvester<-function(wd,n=3,models){ #wd<-"/Users/eric/Datasets/simulatio
       if(!file.exists(wd2)){next}
       setwd(wd2)
       outfile<-scan(file="outfile",what="character",sep="\n") #scan in the outfile, separating at each newline
+      
+      if(multilocus=F){
       #get the result from thermodynamic integration
       thermoline<-grep("(1a)",outfile,value=T) #find the line with the thermodynamic likelihood on it
       if(length(thermoline)==0){next}
@@ -27,7 +29,17 @@ migrate_harvester<-function(wd,n=3,models){ #wd<-"/Users/eric/Datasets/simulatio
       harmo<-as.numeric(substr(harmoline[[1]][2],start=1,stop=12))
       marglike[l,]<-c(m,thermo,bezier,harmo) #add this as a row to the data frame
       l=l+1
+      }
       
+      if(multilocus=T){
+        all.locus.line<-outfile[grep("\\[Scaling",outfile,value=F)-1] #find the line with all three values on it (it comes right before the line that has the scaling factor on it)
+        all.locus.line<-strsplit(all.locus.line," +")
+        thermo<-as.numeric(all.locus.line[[1]][3])
+        bezier<-as.numeric(all.locus.line[[1]][4])
+        harmo<-as.numeric(all.locus.line[[1]][5])
+        marglike[l,]<-c(m,thermo,bezier,harmo) #add this as a row to the data frame
+        l=l+1
+      }
     }
     likelists[[r]]<-marglike
   }
