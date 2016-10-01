@@ -15,7 +15,7 @@ migrate_harvester<-function(wd,n=3,models,multilocus=F){ #wd<-"/Users/eric/Datas
       setwd(wd2)
       outfile<-scan(file="outfile",what="character",sep="\n") #scan in the outfile, separating at each newline
       
-      if(multilocus=F){
+      if(multilocus==F){
       #get the result from thermodynamic integration
       thermoline<-grep("(1a)",outfile,value=T) #find the line with the thermodynamic likelihood on it
       if(length(thermoline)==0){next}
@@ -31,9 +31,10 @@ migrate_harvester<-function(wd,n=3,models,multilocus=F){ #wd<-"/Users/eric/Datas
       l=l+1
       }
       
-      if(multilocus=T){
+      if(multilocus==T){
         all.locus.line<-outfile[grep("\\[Scaling",outfile,value=F)-1] #find the line with all three values on it (it comes right before the line that has the scaling factor on it)
         all.locus.line<-strsplit(all.locus.line," +")
+        if(length(all.locus.line)==0){next}
         thermo<-as.numeric(all.locus.line[[1]][3])
         bezier<-as.numeric(all.locus.line[[1]][4])
         harmo<-as.numeric(all.locus.line[[1]][5])
@@ -51,7 +52,7 @@ migrate_harvester<-function(wd,n=3,models,multilocus=F){ #wd<-"/Users/eric/Datas
 bfcalcs<-function(df,ml="bezier.corrected"){
   df$thermodynamic<-as.numeric(df$thermodynamic)
   df$bezier.corrected<-as.numeric(df$bezier.corrected)
-  df$harmonic<-as.numeric(df$harmonic)
+  df$harmonic.mean<-as.numeric(df$harmonic.mean)
   mlcol<-df[,ml] 
   bmvalue<-mlcol[which.max(mlcol)]
   lbf<-2*(mlcol-bmvalue)

@@ -25,7 +25,8 @@ marglikes<-migrate_harvester(wd=wd,models=models)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
 bfsum_mtdna_pareto2<-bfcalcs_reps(bftable, models=models)
-bfsum
+print("Final Result - 3 reps")
+bfsum_mtdna_pareto2
 
 ```
 Dang, it is choosing 5island!
@@ -37,6 +38,7 @@ models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+print("Final Result - 1 rep")
 bftable
 
 
@@ -47,11 +49,12 @@ Great! This chose panmixia
 wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_msats_results"
 models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
 setwd(wd)
-marglikes<-migrate_harvester(wd=wd,models=models)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
 bfsum_mtdna_pareto2<-bfcalcs_reps(bftable, models=models)
-bfsum
+print("Final Result - 3 reps")
+bfsum_mtdna_pareto2
 
 ```
 
@@ -63,10 +66,10 @@ bfsum
 wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_singlepop_msats_results"
 models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
 setwd(wd)
-marglikes<-migrate_harvester(wd=wd,models=models)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus=T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+print("Final Result - 1 rep")
 bftable
 
 
 ```
-Great! This chose panmixia
