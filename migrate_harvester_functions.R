@@ -13,7 +13,7 @@ migrate_harvester<-function(wd,n=3,models,multilocus=F,quiet=F){ #wd<-"/Users/er
       if(quiet==T) {print(wd2)}
       if(!file.exists(wd2)){next}
       setwd(wd2)
-      outfile<-scan(file="outfile",what="character",sep="\n",quiet=F) #scan in the outfile, separating at each newline
+      outfile<-scan(file="outfile",what="character",sep="\n",quiet=T) #scan in the outfile, separating at each newline
       
       if(multilocus==F){
       #get the result from thermodynamic integration
@@ -75,14 +75,23 @@ getmodels<-function(dfr){
   c(model1,modelprob1,model2,modelprob2)
 }
 
-#modeltables must be a list of bfcalcs output
-#ml_type = "bezier.corrected","thermodynamic", or "harmonic.mean"
-bfcalcs_reps<-function(modeltables,models,ml_type="bezier.corrected"){
+bfcalcs_reps<-function(modeltables,models,ml_type="bezier.corrected", reps=3){
+  #modeltables must be a list of bfcalcs output
+  #ml_type = "bezier.corrected","thermodynamic", or "harmonic.mean"
   
   require(perm)
   output<-list()
   
-  likes<-rbind(cbind(modeltables[[1]],rep=1), cbind(modeltables[[2]],rep=2), cbind(modeltables[[3]], rep=3))
+  #create an empty data frame of reps*length(models) rows and cbind each list element into it.
+  likes<-data.frame(matrix(nrow=reps*length(models),ncol=4))
+  rowindex<-1
+  for(r in 1:reps){
+   likes[rowindex:(r*length(models)),]<-cbind(modeltables[[r]])
+   rowindex<-rowindex+length(models)
+  }
+  colnames(likes)<-c("model","thermodynamic","bezier.corrected","harmonic.mean")
+
+
   likes$model<-factor(likes$model, models) #factor to turn missing models into NA
   likes<-likes[!(is.na(likes$model)),] #remove NAs 
   likes$model<-factor(likes$model, models) #and refactor

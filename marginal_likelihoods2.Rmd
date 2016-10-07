@@ -39,9 +39,9 @@ setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
-bfsum_mtdna_pareto2<-bfcalcs_reps(bftable, models=models)
+bfsum_mtdna_singlepop<-bfcalcs_reps(bftable, models=models)
 print("Final Result - 3 reps")
-bfsum_mtdna_pareto2
+bfsum_mtdna_singlepop
 
 
 ```
