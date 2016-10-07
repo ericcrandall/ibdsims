@@ -1,4 +1,4 @@
-migrate_harvester<-function(wd,n=3,models,multilocus=F){ #wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_mtdna_results"; n=3; models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
+migrate_harvester<-function(wd,n=3,models,multilocus=F,quiet=F){ #wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_mtdna_results"; n=3; models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
   
   setwd(wd)
   likelists<-list() #initialize an empty list
@@ -10,10 +10,10 @@ migrate_harvester<-function(wd,n=3,models,multilocus=F){ #wd<-"/Users/eric/Datas
     l=1 #initialize l
     for(m in models){ #i<-"stepping.stone"
       wd2<-file.path(wd1,m)
-      print(wd2)
+      if(quiet==T) {print(wd2)}
       if(!file.exists(wd2)){next}
       setwd(wd2)
-      outfile<-scan(file="outfile",what="character",sep="\n") #scan in the outfile, separating at each newline
+      outfile<-scan(file="outfile",what="character",sep="\n",quiet=F) #scan in the outfile, separating at each newline
       
       if(multilocus==F){
       #get the result from thermodynamic integration
