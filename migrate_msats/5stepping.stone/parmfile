@@ -142,7 +142,7 @@ usertree=RANDOMTREE
 #
 # input file location
 #   Syntax infile=FILEPATH
-infile=../../ibddata/pareto2_m10.txt
+infile=../../ibddata/singlepop_m3.txt
 #
 # Random number seed specification
 #   Syntax random-seed=<AUTO | OWN:< seedfile | value >

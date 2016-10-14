@@ -68,26 +68,58 @@ This chose 10 deme stepping stone-2 parameter model
 wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_msats_results_rep2"
 models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
 setwd(wd)
-marglikes<-migrate_harvester(wd=wd,models=models,multilocus=T)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-print("Final Result - 1 rep")
 bftable
-
+bfsum_pareto2<-bfcalcs_reps(bftable, models=models, reps=2)
+print("Final Result - 2 reps")
+bfsum_pareto2
 
 ```
-This chose the 10 deme island model
+This gave ambiguous results (p>0.05)
 
-### Replicate 2 of msat Pareto2 IBD model
+### Replicate 3 of msat Pareto2 IBD model
 ```{r msats-Pareto3, echo=F}
 wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_msats_results_rep3"
 models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
 setwd(wd)
-marglikes<-migrate_harvester(wd=wd,models=models,multilocus=T)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-print("Final Result - 1 rep")
 bftable
-
+bfsum_pareto2<-bfcalcs_reps(bftable, models=models, reps=2)
+print("Final Result - 2 reps")
+bfsum_pareto2
 
 ```
-This chose the 5 deme stepping-stone 2 parameter model
+This gave ambiguous results (p>0.05)
 
+### Replicate 4 of msat Pareto2 IBD model
+```{r msats-Pareto4, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_msats_results_rep4"
+models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+This chose the 10 deme stepping-stone 2 parameter model
+
+### Replicate 5 of msat Pareto2 IBD model
+```{r msats-Pareto5, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_pareto2_msats_results_rep5"
+models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+### Replicate 1 of msat singlepop panmixia model
+```{r msats-Panmixia1, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_singlepop_msats_results"
+models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
