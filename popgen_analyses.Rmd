@@ -11,6 +11,8 @@ library("hierfstat")
 library("adegenet")
 library("pegas")
 library("strataG")
+library("ggplot2")
+library("igraph")
 setwd("~/github/ibdsims/")
 ```
 
@@ -102,11 +104,21 @@ pops<-NULL
 for(p in 1:100){ pops<-c(pops,rep(p,2))}
 pops<-pops[-c(1,200)]
 popgraph<-graph(pops,directed=F)
-lo <- cbind(seq(1,1000,length.out = gorder(popgraph)), 0)
 l1<-layout_on_grid(popgraph, width=100,height=1,dim=2)
-gcolors<-c("black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black")
+gcolors<-c("black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black")
 
 plot(popgraph, layout=l1,asp=0.1, vertex.size=1, vertex.label=NA,vertex.color=gcolors)
 
 empdisp<-read.table(file="EmpDisp_pareto2.txt",header=F,sep="\t")
-ggplot(empdisp, aes(V1, V4))+geom_line(color="firebrick")
+empdisp<-empdisp[50:150,]
+
+g<-ggplot(data=empdisp, aes(x=V1,y=V4))+
+  geom_point(aes(x=V1,y=rep(-0.01,101)),color=gcolors, size=3)+
+  geom_bar(stat="identity",color="blue")+geom_point(aes(x=0,y=-0.01),size=3,color="blue")+
+  labs(x="Deme #", y="Dispersal probability")+
+  geom_bar(aes(x=V1+5,y=V4),stat="identity",color="purple")+geom_point(aes(x=5,y=-0.01),size=3,color="purple")+
+  geom_bar(aes(x=V1+10,y=V4),stat="identity",color="violet")+geom_point(aes(x=10,y=-0.01),size=3,color="violet")
+
+g
+  
+```
