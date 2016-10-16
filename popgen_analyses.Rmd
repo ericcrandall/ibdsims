@@ -103,4 +103,10 @@ for(p in 1:100){ pops<-c(pops,rep(p,2))}
 pops<-pops[-c(1,200)]
 popgraph<-graph(pops,directed=F)
 lo <- cbind(seq(1,1000,length.out = gorder(popgraph)), 0)
-plot(popgraph,layout=lo)
+l1<-layout_on_grid(popgraph, width=100,height=1,dim=2)
+gcolors<-c("black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black","black","black","black","black","red","black","black","black","black","black")
+
+plot(popgraph, layout=l1,asp=0.1, vertex.size=1, vertex.label=NA,vertex.color=gcolors)
+
+empdisp<-read.table(file="EmpDisp_pareto2.txt",header=F,sep="\t")
+ggplot(empdisp, aes(V1, V4))+geom_line(color="firebrick")
