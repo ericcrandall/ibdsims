@@ -1,0 +1,38 @@
+[2J[1;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[18;1H[2J[1;1H[2J[1;1H[1;1H================================================================
+This is IBDSim v2.0 (Leblois et al. 2009 MolEcol Ressources) for the
+simulation of genetic data under isolation by distance models
+based in the algorithms described in Leblois et al. 2003 MBE,
+Leblois et al. 2004 Genetics, Leblois et al. 2006 MolEcol
+================================================================
+Summary settings: generic file name is stepstone_mtdna_;
+Mutational model is HKY85 
+Simulation of 10 data set(s) each containing 1 locus;
+Sample: (10 x 1) * 20 = 200 haploid individuals
+evolving at G=0 on a 10 x 1 lattice with absorbing boundaries
+where each node has 100000 individuals
+Dispersal settings are summarized in the 'simul_pars.txt' file 
+================================================================
+[17;1HDataset:          Locus:[17;9H1   [17;26H1   
+[17;9H2   [17;26H1   
+[17;9H3   [17;26H1   
+[17;9H4   [17;26H1   
+[17;9H5   [17;26H1   
+[17;9H6   [17;26H1   
+[17;9H7   [17;26H1   
+[17;9H8   [17;26H1   
+[17;9H9   [17;26H1   
+[17;9H10   [17;26H1   
+
+
+Various statistics on the genetic sample (postdisp)
+Mean between-deme identity prob. (within-pop for a cont. pop.)= 0.08722440 
+ 
+HexpNei= 0.90920000 (+-  0.18853801)
+Var=59.31309045 (+- 15.23122772)
+M= 1.00000000 (+-  0.20660214)
+
+
+
+
+Normal ending of IBDSim (Total computation time is 3.002675 seconds)
+
