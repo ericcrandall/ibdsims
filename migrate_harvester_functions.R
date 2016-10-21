@@ -10,7 +10,7 @@ migrate_harvester<-function(wd,n=3,models,multilocus=F,quiet=F){ #wd<-"/Users/er
     l=1 #initialize l
     for(m in models){ #i<-"stepping.stone"
       wd2<-file.path(wd1,m)
-      if(quiet==T) {print(wd2)}
+      if(quiet==F) {print(wd2)}
       if(!file.exists(wd2)){next}
       setwd(wd2)
       outfile<-scan(file="outfile",what="character",sep="\n",quiet=T) #scan in the outfile, separating at each newline
@@ -116,5 +116,50 @@ bfcalcs_reps<-function(modeltables,models,ml_type="bezier.corrected", reps=3){
   output["perm_t.test.p"]<-ttest.p
   return(output)
   
+}
+
+
+bfplot<-function(modeltables,models,ml_type="bezier.corrected", reps=3,title="Title"){
+
+  pdf(file = "thermodynamic_marginal_likelihoods_final.pdf",width=8.5,height=3)
+  
+  means<-list() #initialize means
+  
+  for(dataset in names(modeltables)){
+    
+    likes<-data.frame(matrix(nrow=reps*length(models),ncol=4))
+    rowindex<-1
+    for(r in 1:reps){
+      likes[rowindex:(r*length(models)),]<-cbind(modeltables[[r]])
+      rowindex<-rowindex+length(models)
+    }
+    colnames(likes)<-c("model","thermodynamic","bezier.corrected","harmonic.mean")
+    likes$model<-factor(likes$model, models)
+    likes<-likes[!(is.na(likes$model)),]
+    
+    #likes<-likes[which(likes[ml_type] > max(likes$bezier.corrected)-100),]
+    y.mean<-as.vector(by(likes[[ml_type]],likes$model,mean))
+    y.sd<-as.vector(by(likes[[ml_type]],likes$model,sd))
+    y.min<-y.mean-((y.sd/sqrt(3))*4.303)
+    y.max<-y.mean+((y.sd/sqrt(3))*4.303)
+    
+    
+    likes.mean<-data.frame(model=factor(models,models),y.mean,y.min,y.max,y.sd)
+    means[[dataset]]<-likes.mean
+    
+    #l<-ggplot(data=likes, aes(x=model,y=bezier.corrected,colour=factor(rep), 
+    #                                 shape=factor(rep), size=20 ))
+    l<-ggplot(data=likes, aes(x=model,y=bezier.corrected))
+    
+    l<-l+geom_point(colour="blue", size=3)+
+      geom_pointrange(data=likes.mean,y=y.mean,ymin=y.min,ymax=y.max, size=0.5)+
+      scale_x_discrete(drop=FALSE)+
+      theme(axis.text.y = element_text(size=16),legend.position="none",axis.title.x=element_text(size=16),axis.title.y=element_blank(),plot.title=element_text(size=20))+
+      ggtitle(title)+ylab("Marginal Log-Likelihood")+
+      coord_fixed(0.1)+ coord_flip()
+    print(l)
+    #  plots<-c(plots,l)
+  }
+  dev.off()
 }
 
