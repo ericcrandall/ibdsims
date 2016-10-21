@@ -11,6 +11,7 @@ library("hierfstat")
 library("adegenet")
 library("pegas")
 library("ape")
+library("strataG")
 ```
 
 ## Loading simulated mtDNA data and making a haplotype network
@@ -18,7 +19,7 @@ library("ape")
 ```{r, echo=F}
 #https://arundurvasula.wordpress.com/2016/02/24/haplotype-networks-in-r/
 
-c <- ape::read.nexus.data("./stepstone_mtdna/stepping_stone_mtdna_AllIndividuals_rep4.nex")
+c <- ape::read.nexus.data("./stepstone_mtdnas_m.01/mtdna_stepstone_m.01_AllIndividuals_rep1.nex")
 d <- as.DNAbin(c)
 e <- dist.dna(d)
 h <- pegas::haplotype(d)
@@ -28,7 +29,58 @@ net <- pegas::haploNet(h)
 i<-stack(setNames(attr(h, "index"), rownames(h)))
 ind.hap<- table(hap=i$ind, pop=pop)
 plot(net, size=attr(net, "freq"), scale.ratio=0.2, pie=ind.hap,legend=F, labels=F)
-legend("topright", colnames(ind.hap), col=rainbow(ncol(ind.hap)), pch=19, ncol=2)
+legend("topleft", colnames(ind.hap), col=rainbow(ncol(ind.hap)), pch=19, ncol=2)
 ```
 
 #maybe convert to gtypes with pop as populations, then compute IBD etc.
+
+```{r convert}
+g<-DNAbin2genind(d[2:201],pop=pop[-1])
+gt<-sequence2gtypes(d[2:201],strata=pop[-1])
+```
+
+```{r analyze}
+pwtest<-pairwiseTest(gt)
+statPhist(gt,nrep = 100)
+fusFs(gt[,,1])
+
+#read in locations on the lattice
+latdists<-read.table("distances.txt")
+latdists<-dist(latdists)
+
+phist_mtdna<-as.dist(pwtest$pair.mat$PHIst)
+ibd<-mantel.randtest(phist_mtdna,latdists)
+plot(latdists, phist_mtdna)
+abline(lm(phist_mtdna~latdists))
+```
+
+```{r ibdloop, echo=F}
+latdists<-read.table("distances.txt")
+latdists<-dist(latdists)
+par(mfrow=c(5,2))
+plots<-list()
+
+for(m in list.files(path="./stepstone_mtdnas_m.01", pattern="AllIndividuals_rep[0-9].nex")){
+  
+  #read in data and convert to gtypes
+  nexus <- ape::read.nexus.data(paste("./stepstone_mtdnas_m.01/",m,sep=""))
+  dna <- as.DNAbin(nexus)
+  gt<-sequence2gtypes(dna[2:201],strata=pop[-1])
+  print(m)
+  
+  pwtest<-pairwiseTest(gt,nrep = 0, stats="phist",quietly=T) # calculate pairwise Phist
+  phist_mtdna<-as.dist(pwtest$pair.mat$PHIst) #grab the Phist table
+  ibd<-mantel.randtest(phist_mtdna,latdists) # calculate Mantel test
+  plots[[m]]<-ggplotRegression(lm(as.vector(phist_mtdna)~as.vector(latdists)))
+  
+  #  plot(latdists, phist_mtdna, xlab="", ylab="", las=1,main=paste("r =",round(ibd$obs,2),"p =",round(ibd$pvalue,2)))
+#  abline(lm(phist_mtdna~latdists))
+}
+
+
+
+
+  
+  
+
+

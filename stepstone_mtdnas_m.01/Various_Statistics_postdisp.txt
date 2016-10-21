@@ -1,0 +1,21 @@
+run: mtdna_stepstone_m.01_ with 10 simulated data files of 1 loci;
+MRCA MOY (total sample) = 213183.200000
+MRCA MAX (total sample) = 318732
+Monomorphs (total sample) = 0.000000
+tooManyMut (total sample) = 0.000000
+Mean between-deme identity prob. (within-pop for cont. pop.) Q1=  0.08650374 
+Mean identity prob. for genes at  0 steps (Qr 0) = 0.098157894737;
+Mean identity prob. for genes at  1 steps (Qr 1) = 0.095666666667;
+Mean identity prob. for genes at  2 steps (Qr 2) = 0.089906250000;
+Mean identity prob. for genes at  3 steps (Qr 3) = 0.090785714286;
+Mean identity prob. for genes at  4 steps (Qr 4) = 0.089625000000;
+Mean identity prob. for genes at  5 steps (Qr 5) = 0.083550000000;
+Mean identity prob. for genes at  6 steps (Qr 6) = 0.086875000000;
+Mean identity prob. for genes at  7 steps (Qr 7) = 0.084000000000;
+Mean identity prob. for genes at  8 steps (Qr 8) = 0.078625000000;
+Mean identity prob. for genes at  9 steps (Qr 9) = 0.079500000000;
+Mean genetic diversity (Nei Expected Heterozygosity) and SE =  0.90552500 (+-  0.18789589))
+Mean Variance of allelic size and SE = 59.50911558 (+- 16.96369474))
+Mean M statistic (Garza & Williamson 2001) and SE =  1.00000000 (+-  0.20660214))
+Mean Fst (Fis for cont. pop.) =  0.00000000 
+Mean Fst (Fis for cont. pop.) calculated as mean_num/mean_denom =         nan
