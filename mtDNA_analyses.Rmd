@@ -60,7 +60,7 @@ latdists<-dist(latdists)
 par(mfrow=c(5,2))
 plots<-list()
 
-for(m in list.files(path="./stepstone_mtdnas_m.01", pattern="AllIndividuals_rep[0-9].nex")){
+for(m in list.files(path="./stepstone_mtdnas_m.01",pattern="AllIndividuals_rep[0-9]+.nex")){
   
   #read in data and convert to gtypes
   nexus <- ape::read.nexus.data(paste("./stepstone_mtdnas_m.01/",m,sep=""))
@@ -71,16 +71,18 @@ for(m in list.files(path="./stepstone_mtdnas_m.01", pattern="AllIndividuals_rep[
   pwtest<-pairwiseTest(gt,nrep = 0, stats="phist",quietly=T) # calculate pairwise Phist
   phist_mtdna<-as.dist(pwtest$pair.mat$PHIst) #grab the Phist table
   ibd<-mantel.randtest(phist_mtdna,latdists) # calculate Mantel test
-  plots[[m]]<-ggplotRegression(lm(as.vector(phist_mtdna)~as.vector(latdists)))
+  fit<-lm(as.vector(phist_mtdna)~as.vector(latdists))
+  plots[[m]]<-ggplotRegression2(fit, title=paste("r =",round(ibd$obs,2),"p =",round(ibd$pvalue,2)))
   
   #  plot(latdists, phist_mtdna, xlab="", ylab="", las=1,main=paste("r =",round(ibd$obs,2),"p =",round(ibd$pvalue,2)))
 #  abline(lm(phist_mtdna~latdists))
+
 }
 
 
 
-
+grid.arrange(grobs=plots,ncol=5,nrow=2)
   
-  
+arrangeGrob(grobs=plots,ncol=5,nrow=2)  
 
 
