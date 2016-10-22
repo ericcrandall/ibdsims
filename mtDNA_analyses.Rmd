@@ -19,7 +19,7 @@ library("strataG")
 ```{r, echo=F}
 #https://arundurvasula.wordpress.com/2016/02/24/haplotype-networks-in-r/
 
-c <- ape::read.nexus.data("./stepstone_mtdnas_m.01/mtdna_stepstone_m.01_AllIndividuals_rep1.nex")
+c <- ape::read.nexus.data("./stepstone_mtdnas_m.01/mtdna_stepstone_m.01_AllIndividuals_rep2.nex")
 d <- as.DNAbin(c)
 e <- dist.dna(d)
 h <- pegas::haplotype(d)
@@ -32,7 +32,6 @@ plot(net, size=attr(net, "freq"), scale.ratio=0.2, pie=ind.hap,legend=F, labels=
 legend("topleft", colnames(ind.hap), col=rainbow(ncol(ind.hap)), pch=19, ncol=2)
 ```
 
-#maybe convert to gtypes with pop as populations, then compute IBD etc.
 
 ```{r convert}
 g<-DNAbin2genind(d[2:201],pop=pop[-1])
@@ -55,24 +54,46 @@ abline(lm(phist_mtdna~latdists))
 ```
 
 ```{r ibdloop, echo=F}
+
+# for loop is wrapped in local() as described here http://stackoverflow.com/questions/31993704/storing-ggplot-objects-in-a-list-from-within-loop-in-r
+
 latdists<-read.table("distances.txt")
 latdists<-dist(latdists)
 par(mfrow=c(5,2))
 plots<-list()
+fits<-list()
+ibds<-list()
 
-for(m in list.files(path="./stepstone_mtdnas_m.01",pattern="AllIndividuals_rep[0-9]+.nex")){
+for(m in list.files(path="./stepstone_mtdnas_m.01",pattern="AllIndividuals_rep[0-9]+.nex"))
+  {
   
   #read in data and convert to gtypes
   nexus <- ape::read.nexus.data(paste("./stepstone_mtdnas_m.01/",m,sep=""))
   dna <- as.DNAbin(nexus)
   gt<-sequence2gtypes(dna[2:201],strata=pop[-1])
-  print(m)
   
   pwtest<-pairwiseTest(gt,nrep = 0, stats="phist",quietly=T) # calculate pairwise Phist
   phist_mtdna<-as.dist(pwtest$pair.mat$PHIst) #grab the Phist table
   ibd<-mantel.randtest(phist_mtdna,latdists) # calculate Mantel test
   fit<-lm(as.vector(phist_mtdna)~as.vector(latdists))
-  plots[[m]]<-ggplotRegression2(fit, title=paste("r =",round(ibd$obs,2),"p =",round(ibd$pvalue,2)))
+  
+  print(m)
+  mdl<-fit$model
+  
+  pl<-ggplot(mdl, aes_string(x = mdl[[2]], y = mdl[[1]])) + 
+      geom_point() + 
+      ggtitle(paste("r =",round(ibd$obs,2),"p =",round(ibd$pvalue,2)))+
+      stat_smooth(method = "lm", col = "red") +
+      geom_abline(slope=0,intercept=0, size=1)+
+      theme(axis.title.x=element_blank(),axis.title.y=element_blank())+ylim(-0.05,0.22)
+
+  plots[[m]]<-pl
+#  fits[[m]]<-fit
+#  ibds[[m]]<-ibd
+  
+  
+#  pl = ggplotRegression2(fit, title=paste("r =",round(ibd$obs,2),"p =",round(ibd$pvalue,2)))
+#   assign(m,pl)
   
   #  plot(latdists, phist_mtdna, xlab="", ylab="", las=1,main=paste("r =",round(ibd$obs,2),"p =",round(ibd$pvalue,2)))
 #  abline(lm(phist_mtdna~latdists))
@@ -80,9 +101,10 @@ for(m in list.files(path="./stepstone_mtdnas_m.01",pattern="AllIndividuals_rep[0
 }
 
 
-
 grid.arrange(grobs=plots,ncol=5,nrow=2)
   
-arrangeGrob(grobs=plots,ncol=5,nrow=2)  
+argg<-arrangeGrob(grobs=plots,ncol=5,nrow=2)  
+ggsave("stepstone_mtdnas_m.5.pdf",argg)
 
-
+ pl<-ggplotRegression2(fit, title=paste("r =",round(ibd$obs,2),"p =",round(ibd$pvalue,2)))
+```

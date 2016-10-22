@@ -179,12 +179,13 @@ ggplotRegression <- function (fit) {
 }
 
 
-ggplotRegression2 <- function (fit, title=title) {
+ggplotRegression2 <- function (fit, title) {
   
   require(ggplot2)
   
   ggplot(fit$model, aes_string(x = names(fit$model)[2], y = names(fit$model)[1])) + 
     geom_point() +
     stat_smooth(method = "lm", col = "red") +
-    labs(title = title)
+    labs(title = title) + 
+    theme(axis.title.x=element_blank(),axis.title.y=element_blank())
 }
