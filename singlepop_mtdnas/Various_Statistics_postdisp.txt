@@ -1,0 +1,12 @@
+run: mtdna_singlepop_ with 10 simulated data files of 1 loci;
+MRCA MOY (total sample) = 3.000000
+MRCA MAX (total sample) = 3
+Monomorphs (total sample) = 0.000000
+tooManyMut (total sample) = 0.000000
+Mean between-deme identity prob. (within-pop for cont. pop.) Q1=  0.00000000 
+Mean identity prob. for genes at  0 steps (Qr 0) = 0.999000000000;
+Mean genetic diversity (Nei Expected Heterozygosity) and SE =  0.00099500 (+-  0.00196100))
+Mean Variance of allelic size and SE =  0.00050000 (+-  0.00098543))
+Mean M statistic (Garza & Williamson 2001) and SE =  1.00000000 (+-  0.20660214))
+Mean Fst (Fis for cont. pop.) =  0.00000000 
+Mean Fst (Fis for cont. pop.) calculated as mean_num/mean_denom =         nan

@@ -1,4 +1,4 @@
-run: mtdna_stepstone_m.01_ with 10 simulated data files of 1 loci;
+run: mtdna_stepstone_m.1_ with 10 simulated data files of 1 loci;
 MRCA MOY (total sample) = 208252.400000
 MRCA MAX (total sample) = 417837
 Monomorphs (total sample) = 0.000000

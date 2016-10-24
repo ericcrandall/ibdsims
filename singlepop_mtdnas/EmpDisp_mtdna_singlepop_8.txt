@@ -1,0 +1,13 @@
+   -1         0        0 nan nan 
+    0         0        0 nan nan 
+    1         0        0 nan nan 
+Various statistics on the whole empirical distribution (non-central moments)
+mean =          nan          nan 
+non-central sigma≤  =          nan          nan 
+non-central kurtosis=          nan          nan 
+non-central skewness=          nan          nan 
+Various statistics on the semi empirical distribution (one side, axial dispersal, central moments)
+mean axial dispersal =          nan          nan 
+central/axial sigma≤  =          nan          nan 
+central/axial kurtosis=          nan          nan 
+central/axial skewness=          nan          nan

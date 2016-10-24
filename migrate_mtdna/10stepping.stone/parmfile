@@ -131,7 +131,7 @@ nmlength=10
 #
 #
 datatype=SequenceData
-ttratio=1.000000 
+ttratio=9.000000 
 freqs-from-data=YES
 seqerror-rate=0.000000
 categories=1 #no categories file specified
@@ -151,7 +151,7 @@ usertree=RANDOMTREE
 #
 # input file location
 #   Syntax infile=FILEPATH
-infile=../../ibddata/singlepop_mtDNA.txt
+infile=../../ibddata/stepstone_mtdna_0.01/stepstone_mtdna_rep10.nex
 #
 # Random number seed specification
 #   Syntax random-seed=<AUTO | OWN:< seedfile | value >

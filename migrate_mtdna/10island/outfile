@@ -1,0 +1,95 @@
+  =========================================================================
+  .  HKY85;  10 x 1 lattice with absorbing boundaries; mutation proba=5e-05
+  =========================================================================
+  MIGRATION RATE AND POPULATION SIZE ESTIMATION
+  using Markov Chain Monte Carlo simulation
+  =========================================================================
+  Version 3.6.4
+
+  Program started at Fri Oct 21 23:33:43 2016
+                                                   
+
+
+Options in use:
+---------------
+
+Analysis strategy is BAYESIAN INFERENCE
+
+Proposal distribution:
+Parameter group          Proposal type
+-----------------------  -------------------
+Population size (Theta)  Metropolis sampling
+Migration rate      (M)       Slice sampling
+
+
+Prior distribution (Proposal-delta will be tuned to acceptance frequence 0.440000):
+Parameter group          Prior type   Minimum    Mean(*)    Maximum    Delta
+-----------------------  ------------ ---------- ---------- ---------- ----------
+Population size (Theta)   Exp window  0.000000   0.100000  10.000000   1.000000 
+Migration rate      (M)   Exp window  0.000100  10000.0000 1000000.00 10000.0000
+
+
+
+Datatype: DNA sequence data
+
+Inheritance scalers in use for Thetas (specified scalars=1)
+1.00 
+[Each Theta uses the (true) ineritance scalar of the first locus as a reference]
+
+
+Pseudo-random number generator: Mersenne-Twister                                
+Random number seed (with internal timer)           1415804960
+
+Start parameters:
+   First genealogy was started using a random tree
+   Theta values were generated  from guessed values
+   Theta = 0.01000
+   M values were generated from guessed values
+   M-matrix:  1.00 [all are the same]
+
+Migration model:
+   N-Island migration model                    
+
+Mutation rate is constant 
+
+Markov chain settings:
+   Long chains (long-chains):                              1
+      Steps sampled (inc*samples*rep):               7500000
+      Steps recorded (sample*rep):                     75000
+   Combining over replicates:                              3
+   Static heating scheme
+      6 chains with  temperatures
+       1.00, 1.50, 3.00, 6.00,12.00,1000000.00
+      Swapping interval is 1
+   Burn-in per replicate (samples*inc):              1000000
+
+Print options:
+   Data file: ../../ibddata/stepstone_mtdna_0.01/stepstone_m
+   Output file (ASCII text):                         outfile
+   Output file (PDF):                            outfile.pdf
+   Posterior distribution:                         bayesfile
+   All values of Post.Dist:                     bayesallfile
+   Print data:                                            No
+   Print genealogies:                                     No
+   Plot data: No                                            
+
+Summary of data:
+Title:.  HKY85;  10 x 1 lattice with absorbing boundaries; m
+Data file:  ../../ibddata/stepstone_mtdna_0.01/stepstone_mtd
+Datatype:                                      Sequence data
+Number of loci:                                            1
+
+Population                                   Locus   Gene copies    
+--------------------------------------------------------------------
+  1 TACTCTATATATTATGTTTGGTGTGTGATCTGGTTTAGTC     1         1
+  2 TTTTTGGTTGCTTCCGCCTTCGTTGACTTTGTTGCTTGCT     1         0
+  3 TACTCTATATATTATGTTTGGTGTGTGATCTGGTTTAGTC     1         3
+  4 TTTTTGGTTGCTTCCGCCTTCGTTGACTTTGTTGCTTGCT     1         0
+  5 TACTCTATATATTATGTTTGGTGTGTGATCTGGTTTAGTC     1         5
+  6 TTTTTGGTTGCTTCCGCCTTCGTTGACTTTGTTGCTTGCT     1         0
+  7 TACTCTATATATTATGTTTGGTGTGTGATCTGGTTTAGTC     1         7
+  8 TTTTTGGTTGCTTCCGCCTTCGTTGACTTTGTTGCTTGCT     1         0
+  9 TACTCTATATATTATGTTTGGTGTGTGATCTGGTTTAGTC     1         9
+ 10 TTTTTGGTTGCTTCCGCCTTCGTTGACTTTGTTGCTTGAT     1         0
+    Total of all populations                     1        25
+
