@@ -18,22 +18,22 @@ HKY85 Mutation rate (mu) is constant for this marker : 5e-05
 Demographic phase: 0
 At G=0 (sampling time ==  present) : 
 lattice dimensions are (LatticeSizeX * LatticeSizeY): 10 x 1
-Haploid individuals : nbr of genes per lattice node (1* IndsPerPop): 100000
+Haploid individuals : nbr of genes per lattice node (1* IndsPerPop): 10000
 ContDemeSizeChange=Logistic
 ContLatticeSizeChange=Logistic
 
 
 Dispersal model: b
-Axial dispersal proba (TotalEmmigrationRate): 0.001
+Axial dispersal proba (TotalEmmigrationRate): 0.01
 Stepping stone model 
 Bounds (dx_max,dy_max)=(1,0)
 Marginal dispersal distribution and checksum:
-0 0.999 0.999
-1 0.001 1
+0 0.99 0.99
+1 0.01 1
 
-axial mean dispersal (within bounds): 0.001
-axial sigma2 (within bounds): 0.001
-axial kurtosis (within bounds): 997
+axial mean dispersal (within bounds): 0.01
+axial sigma2 (within bounds): 0.01
+axial kurtosis (within bounds): 97
 
 If kurtosis appears wrong there may be many reasons
    It may be because the dispersal distribution is not
