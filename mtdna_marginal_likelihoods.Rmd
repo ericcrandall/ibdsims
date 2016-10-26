@@ -2,7 +2,7 @@
 title: "mtdna_marginal_likelihood"
 author: "Eric Crandall"
 date: "October 21, 2016"
-output: pdf_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -27,42 +27,33 @@ bfsum_pareto2
 ```
 This chose panmixia
 
-### Replicates of mtDNA stepping stone model
-```{r stepstone1, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/mtdna_stepstone.01_rep1"
+### Replicates of mtDNA stepping stone model with m=0.01 and Ne = 100,000
+```{r nl5_m0.01_1, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.01/simrep1"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
 ```
 
-```{r stepstone2, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/mtdna_stepstone.01_rep2"
+```{r nl5_m0.01_2, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.01/simrep2"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
 ```
 
-```{r stepstone3, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/mtdna_stepstone.01_rep3"
+```{r nl5_m0.01_3, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.01/simrep3"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
 ```
 
-```{r stepstone4, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/mtdna_stepstone.01_rep4"
-setwd(wd)
-marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
-bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-bftable
-```
-
-
-```{r stepstone5, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/mtdna_stepstone.01_rep5"
+```{r nl5_m0.01_4, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.01/simrep4"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
@@ -70,40 +61,132 @@ bftable
 ```
 
 
-```{r stepstone6, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/mtdna_stepstone.01_rep6"
+```{r nl5_m0.01_5, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.01/simrep5"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
 ```
 
-```{r stepstone7, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/mtdna_stepstone.01_rep7"
+
+```{r nl5_m0.01_6, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.01/simrep6"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
 ```
 
-```{r stepstone8, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/mtdna_stepstone.01_rep8"
+```{r nl5_m0.01_7, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.01/simrep7"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
 ```
 
-```{r stepstone9, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/mtdna_stepstone.01_rep9"
+```{r nl5_m0.01_8, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.01/simrep8"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
 ```
 
-```{r stepstone10, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/mtdna_stepstone.01_rep10"
+```{r nl5_m0.01_9, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.01/simrep9"
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+```{r nl5_m0.01_10, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.01/simrep10"
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+### Replicates of mtDNA stepping stone model with m=0.01 and Ne = 100,000
+```{r nl5_m0.001_1, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.001/simrep1"
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+```{r nl5_m0.001_2, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.001/simrep2"
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+```{r nl5_m0.001_3, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.001/simrep3"
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+```{r nl5_m0.001_4, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.001/simrep4"
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+
+```{r nl5_m0.001_5, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.001/simrep5"
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+
+```{r nl5_m0.001_6, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.001/simrep6"
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+```{r nl5_m0.001_7, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.001/simrep7"
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+```{r nl5_m0.001_8, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.001/simrep8"
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+```{r nl5_m0.001_9, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.001/simrep9"
+setwd(wd)
+marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
+bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+bftable
+```
+
+```{r nl5_m0.001_10, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.001/simrep10"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
