@@ -151,7 +151,7 @@ usertree=RANDOMTREE
 #
 # input file location
 #   Syntax infile=FILEPATH
-infile=../../../../ibddata/singlepop_mtdna/singlepop_mtdna_rep9.nex
+infile=../../../../ibddata/stepstone_mtdna_Nl4_m0.01/stepstone_mtdna_rep9.nex 
 #
 # Random number seed specification
 #   Syntax random-seed=<AUTO | OWN:< seedfile | value >
