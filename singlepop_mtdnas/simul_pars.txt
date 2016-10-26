@@ -2,7 +2,7 @@ IBDsim built on Sep 14 2015 at 18:56:22.
 
 Random Seeds : 14071789
 nbr of simulated samples : 10 dataset(s) x 1 locus = 10
-generic data file name: mtdna_singlepop_
+generic data file name: singlepop_mtdna_
 Lattice with absorbing boundaries
 nbr of loci per sample file (n_locus): 1
 Postdisp Sample: nbr of sampled nodes (dim_sample1 X dim_sample2): 1 x 1

@@ -35,8 +35,11 @@ plot(net, size=attr(net, "freq"), scale.ratio=0.2, pie=ind.hap,legend=F, labels=
 legend("topleft", colnames(ind.hap), col=rainbow(ncol(ind.hap)), pch=19, ncol=2)
 ```
 
+# Converting between data types
 
-```{r convert}
+Here I want to convert from DNAbin2 to genind format, and then from genind format to gtypes. I am chopping off the ancestral sequence that is included by ibdsim by indexing just the 2nd to 201st rows.
+```{r convert, echo=F}
+#This comment won't show up.
 g<-DNAbin2genind(d[2:201],pop=pop[-1])
 gt<-sequence2gtypes(d[2:201],strata=pop[-1])
 ```
@@ -56,6 +59,8 @@ plot(latdists, phist_mtdna)
 abline(lm(phist_mtdna~latdists))
 ```
 
+# IBD Loop
+This is for looping through the simulated output files.
 ```{r ibdloop, echo=F}
 
 
