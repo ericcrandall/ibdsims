@@ -178,7 +178,7 @@ ggplotRegression <- function (fit) {
                        " P =",signif(summary(fit)$coef[2,4], 5)))
 }
 
-
+# this one is specific to my needs for IBD plots
 ggplotRegression2 <- function (fit, title) {
   
   require(ggplot2)
@@ -189,3 +189,27 @@ ggplotRegression2 <- function (fit, title) {
     labs(title = title) + 
     theme(axis.title.x=element_blank(),axis.title.y=element_blank())
 }
+
+
+#a function for creating Nm vectors out of m and Theta vectors.
+
+migrants.per.gen<-function(x){
+  #x<-x[[1]]
+  m<-names(x)[which(grepl("M_",names(x)))] #names of m columns
+  #theta<-names(x)[which(grepl("Theta_",names(x)))] #names of theta columns
+  for(n in m){
+    t<-paste("Theta",strsplit(n,split="_")[[1]][3],sep="_")
+    x[,paste("Nm",strsplit(n,split="_")[[1]][2],strsplit(n,split="_")[[1]][3],sep="_")]<-  	x[,which(names(x)==n)]*x[,which(names(x)==t)] #this hairy little statement makes a new column named "Nm_X_Y" and then fills it by multiplying the M_X_Y column by the Theta_Y column	
+  }
+  return(x)
+}
+
+NeGivenMu<-function(x,mu){
+  t<-names(x)[which(grepl("Theta_",names(x)))]
+  for(n in t){
+    x[,paste("Ne",strsplit(n,split="_")[[1]][2],sep="_")]<-x[,which(names(x)==n)]/mu #this hairy little statement makes a new column named "Ne_X" and then fills it by dividing the ThetaX column by mu
+  }
+  return(x)
+}
+  
+
