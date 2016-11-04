@@ -19,9 +19,9 @@ setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F, quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
 bftable
-bfsum_pareto2<-bfcalcs_reps(bftable, models=models, reps=3)
+bfsum<-bfcalcs_reps(bftable, models=models, reps=3)
 print("Final Result - 3 reps")
-bfsum_pareto2
+bfsum2
 
 ```
 This chose panmixia
@@ -32,7 +32,9 @@ wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_panmixia/simrep1"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-bftable
+bfsum2<-bfcalcs_reps(bftable, models=models, reps=2) 
+print("Final Result - 2 reps") 
+bfsum2
 ```
 
 ```{r panmixia_2, echo=F}
@@ -40,7 +42,9 @@ wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_panmixia/simrep2"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-bftable
+bfsum2<-bfcalcs_reps(bftable, models=models, reps=2) 
+print("Final Result - 2 reps") 
+bfsum2
 ```
 
 ```{r panmixia_3, echo=F}
@@ -48,7 +52,9 @@ wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_panmixia/simrep3"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-bftable
+bfsum2<-bfcalcs_reps(bftable, models=models, reps=2) 
+print("Final Result - 2 reps") 
+bfsum2
 ```
 
 ```{r panmixia_4, echo=F}
@@ -56,7 +62,9 @@ wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_panmixia/simrep4"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-bftable
+bfsum2<-bfcalcs_reps(bftable, models=models, reps=2) 
+print("Final Result - 2 reps") 
+bfsum2
 ```
 
 
@@ -65,7 +73,9 @@ wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_panmixia/simrep5"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-bftable
+bfsum2<-bfcalcs_reps(bftable, models=models, reps=2) 
+print("Final Result - 2 reps") 
+bfsum2
 ```
 
 
@@ -74,7 +84,9 @@ wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_panmixia/simrep6"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-bftable
+bfsum2<-bfcalcs_reps(bftable, models=models, reps=2) 
+print("Final Result - 2 reps") 
+bfsum2
 ```
 
 ```{r panmixia_7, echo=F}
@@ -82,7 +94,9 @@ wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_panmixia/simrep7"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-bftable
+bfsum2<-bfcalcs_reps(bftable, models=models, reps=2) 
+print("Final Result - 2 reps") 
+bfsum2
 ```
 
 ```{r panmixia_8, echo=F}
@@ -90,7 +104,9 @@ wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_panmixia/simrep8"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-bftable
+bfsum2<-bfcalcs_reps(bftable, models=models, reps=2) 
+print("Final Result - 2 reps") 
+bfsum2
 ```
 
 ```{r panmixia_9, echo=F}
@@ -98,7 +114,9 @@ wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_panmixia/simrep9"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-bftable
+bfsum2<-bfcalcs_reps(bftable, models=models, reps=2) 
+print("Final Result - 2 reps") 
+bfsum2
 ```
 
 ```{r panmixia_10, echo=F}
@@ -106,7 +124,9 @@ wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_panmixia/simrep10"
 setwd(wd)
 marglikes<-migrate_harvester(wd=wd,models=models,multilocus = F,quiet = T)
 bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
-bftable
+bfsum2<-bfcalcs_reps(bftable, models=models, reps=2) 
+print("Final Result - 2 reps") 
+bfsum2
 ```
 
 
