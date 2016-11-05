@@ -1,0 +1,146 @@
+IBDsim built on Sep 14 2015 at 18:56:22.
+
+Random Seeds : 14071789
+nbr of simulated samples : 100 dataset(s) x 1 locus = 100
+generic data file name: zeta2_mtdna_
+Lattice with absorbing boundaries
+nbr of loci per sample file (n_locus): 1
+Postdisp Sample: nbr of sampled nodes (dim_sample1 X dim_sample2): 10 x 1
+Postdisp sample: Unsampled nodes between sampled nodes (void_sample_node-1): 9
+Postdisp sample: nbr of sampled individuals per sampled node (IndPerPopSampled): 20
+Postdisp sample: x/y coordinate of "first" (bottom left) sampled node (xmin_sample/ymin_sample): 5/1
+
+==============
+Mutation model(s) (if multiple markers/loci have been specified, only the first locus of each marker is mentioned below):
+
+HKY85 Mutation rate (mu) is constant for this marker : 5e-05
+==============
+
+Demographic phase: 0
+At G=0 (sampling time ==  present) : 
+lattice dimensions are (LatticeSizeX * LatticeSizeY): 100 x 1
+Haploid individuals : nbr of genes per lattice node (1* IndsPerPop): 1000000
+ContDemeSizeChange=Logistic
+ContLatticeSizeChange=Logistic
+
+
+Dispersal model: P
+Axial dispersal proba (TotalEmmigrationRate): 0.0001
+Pareto model 
+ParetoShape: 2
+Bounds (dx_max,dy_max)=(100,0)
+Marginal dispersal distribution and checksum:
+0 0.9999 0.9999
+1 6.11627e-05 0.999961
+2 1.52907e-05 0.999976
+3 6.79585e-06 0.999983
+4 3.82267e-06 0.999987
+5 2.44651e-06 0.99999
+6 1.69896e-06 0.999991
+7 1.24822e-06 0.999992
+8 9.55667e-07 0.999993
+9 7.55095e-07 0.999994
+10 6.11627e-07 0.999995
+11 5.05477e-07 0.999995
+12 4.24741e-07 0.999996
+13 3.61909e-07 0.999996
+14 3.12054e-07 0.999996
+15 2.71834e-07 0.999997
+16 2.38917e-07 0.999997
+17 2.11636e-07 0.999997
+18 1.88774e-07 0.999997
+19 1.69426e-07 0.999997
+20 1.52907e-07 0.999998
+21 1.38691e-07 0.999998
+22 1.26369e-07 0.999998
+23 1.15619e-07 0.999998
+24 1.06185e-07 0.999998
+25 9.78603e-08 0.999998
+26 9.04773e-08 0.999998
+27 8.38994e-08 0.999998
+28 7.80136e-08 0.999998
+29 7.27261e-08 0.999999
+30 6.79585e-08 0.999999
+31 6.36448e-08 0.999999
+32 5.97292e-08 0.999999
+33 5.61641e-08 0.999999
+34 5.29089e-08 0.999999
+35 4.99287e-08 0.999999
+36 4.71934e-08 0.999999
+37 4.46769e-08 0.999999
+38 4.23564e-08 0.999999
+39 4.02122e-08 0.999999
+40 3.82267e-08 0.999999
+41 3.63847e-08 0.999999
+42 3.46727e-08 0.999999
+43 3.30788e-08 0.999999
+44 3.15923e-08 0.999999
+45 3.02038e-08 0.999999
+46 2.89049e-08 0.999999
+47 2.7688e-08 0.999999
+48 2.65463e-08 0.999999
+49 2.54738e-08 0.999999
+50 2.44651e-08 0.999999
+51 2.35151e-08 0.999999
+52 2.26193e-08 0.999999
+53 2.17738e-08 0.999999
+54 2.09749e-08 0.999999
+55 2.02191e-08 1
+56 1.95034e-08 1
+57 1.88251e-08 1
+58 1.81815e-08 1
+59 1.75704e-08 1
+60 1.69896e-08 1
+61 1.64372e-08 1
+62 1.59112e-08 1
+63 1.54101e-08 1
+64 1.49323e-08 1
+65 1.44764e-08 1
+66 1.4041e-08 1
+67 1.3625e-08 1
+68 1.32272e-08 1
+69 1.28466e-08 1
+70 1.24822e-08 1
+71 1.2133e-08 1
+72 1.17984e-08 1
+73 1.14773e-08 1
+74 1.11692e-08 1
+75 1.08734e-08 1
+76 1.05891e-08 1
+77 1.03159e-08 1
+78 1.0053e-08 1
+79 9.80014e-09 1
+80 9.55667e-09 1
+81 9.32216e-09 1
+82 9.09618e-09 1
+83 8.87831e-09 1
+84 8.66818e-09 1
+85 8.46542e-09 1
+86 8.2697e-09 1
+87 8.08068e-09 1
+88 7.89807e-09 1
+89 7.72159e-09 1
+90 7.55095e-09 1
+91 7.38591e-09 1
+92 7.22621e-09 1
+93 7.07165e-09 1
+94 6.92199e-09 1
+95 6.77703e-09 1
+96 6.63658e-09 1
+97 6.50044e-09 1
+98 6.36846e-09 1
+99 6.24045e-09 1
+100 6.11627e-09 1
+
+axial mean dispersal (within bounds): 0.000317274
+axial sigma2 (within bounds): 0.00611627
+axial kurtosis (within bounds): 553194
+
+If kurtosis appears wrong there may be many reasons
+   It may be because the dispersal distribution is not
+   computed with enough precision.
+
+D sigma2 (within bounds): 6116.27
+Neighborhood  (within bounds): 12232.5(1D) or 38429.6 (2D).
+expected slope (within bounds): 8.17492e-05(1D) or 2.60216e-05 (2D).
+

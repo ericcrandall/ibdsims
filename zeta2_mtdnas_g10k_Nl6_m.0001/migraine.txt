@@ -1,0 +1,18 @@
+DemographicModel=LinearIBD
+habitatPars= 0.5 0.5 100 1 0
+testPoint=2Nmu=100
+testPoint=g=0.5
+AxialDistanceBins=100
+Jobmin=1
+jobmax=100
+outputType=Perlocus
+genepoprootName=are_
+PointNumber=512
+NRunsPerPoint=30
+statistic=PAC
+WriteSequence=Over
+//Writesequence=WriteRKrig
+//writesequence=readpoints,Append
+Lowerbound= 33.3333, nan,  0
+UpperBound= 300,  nan,  0.999
+NextBounds=PointsFromR
