@@ -18,7 +18,7 @@ models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","
 
 
 ```{r, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_nl5_m0.001"
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_g10k_nl4_m0.01"
 setwd(wd)
 bestmodel<-"10stepping.stone1"
 all_nm<-list()
@@ -110,7 +110,7 @@ setwd(wd)
                  value.name = "Nm"
   )
  violin_nm<-ggplot(longNm, (aes(x=Parameter, y=Nm))) + geom_violin()  + 
-    scale_y_log10(breaks=c(0.00001,0.0001,0.001,0.01,0.1,1,10,100,1000,10000,100000), labels=c("0.00001","0.0001","0.001","0.01","0.1","1","10","100","1,000","10,000","100,000")) +
+    scale_y_log10(breaks=c(0.00001,0.0001,0.001,0.01,0.1,1,10,100,1000,10000,100000), limits=c(1,100), labels=c("0.00001","0.0001","0.001","0.01","0.1","1","10","100","1,000","10,000","100,000")) +
     labs(title=element_blank(), x="Parameter", y="Effective Female Migrants per Generation") + coord_flip()
 violin_nm
  
@@ -126,7 +126,7 @@ violin_nm
                  value.name = "Ne"
   )
  violin_ne<-ggplot(longNe, (aes(x=Parameter, y=Ne))) + geom_violin()  + 
-    scale_y_log10(breaks=c(0.00001,0.0001,0.001,0.01,0.1,1,10,100,1000,10000,100000), labels=c("0.00001","0.0001","0.001","0.01","0.1","1","10","100","1,000","10,000","100,000")) +
+    scale_y_log10(breaks=c(0.00001,0.0001,0.001,0.01,0.1,1,10,100,1000,10000,100000),limits=c(1000,1000000), labels=c("0.00001","0.0001","0.001","0.01","0.1","1","10","100","1,000","10,000","100,000")) +
     labs(title=element_blank(), x="Parameter", y="Effective Population Size") + coord_flip()
  violin_ne
  
