@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 options(width = 100)
 source("/Users/eric/github/ibdsims/migrate_harvester_functions.R")
-models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","10stepping.stone","10stepping.stone1")
+models<-c("10stepping.stone","5stepping.stone","10stepping.stone1","5stepping.stone1","10island","5island","panmixia")
 ```
 
 ## Migrate results for datasets simulated with a growth phase 10,000 generations in the past
@@ -106,3 +106,23 @@ for(r in 1:10){
 }
 ```
 
+### Taking the means of the model probabilities across replicates
+
+```{r modelprobs}
+library(reshape2)
+finalprobs<-data.frame(models)
+for(sim in ls(pattern="bflist")){
+  # this takes each of those lists and gets the model probabilities out for each model
+  probs<-matrix(as.numeric(laply(get(sim), as.matrix)[,,7]),nrow=10)
+  # take the mean model probability for each model
+  probs2<-data.frame(apply(probs,2,mean))
+  finalprobs<-cbind(finalprobs,probs2)
+}
+names(finalprobs)<-c("models",ls(pattern="bflist"))
+
+longprobs<-melt(finalprobs,id.vars = "models",variable.name = "Simulation",value.name="Model Probability")
+longprobs$models<-factor(longprobs$models, levels=models)
+longprobs$Simulation<-factor(longprobs$Simulation, levels=c("bflist_g10k_nl4_m0.01","bflist_g10k_nl5_m0.001","bflist_g10k_nl6_m0.0001","bflist_g10k_nl4_m0.1","bflist_g10k_nl5_m0.01","bflist_g10k_nl6_m0.001"),labels=c("Ne = 10,000\nm = 0.01","Ne = 100,000\nm = 0.001","Ne = 1,000,000\nm = 0.0001","Ne = 10,000\nm = 0.1","Ne = 100,000\nm=0.01","Ne = 1,000,000\nm = 0.001"))
+ggplot(data=longprobs,aes(x=Simulation,y=`Model Probability`)) + geom_bar(stat="identity",aes(fill=models)) + scale_fill_brewer(palette = "RdYlBu")
+
+```

@@ -120,3 +120,6 @@ ggsave("stepstone_mtdnas_g10k_Nl4_m.1.pdf",argg)
 
  pl<-ggplotRegression2(fit, title=paste("r =",round(ibd$obs,2),"p =",round(ibd$pvalue,2)))
 ```
+
+
+
