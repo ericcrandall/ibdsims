@@ -97,13 +97,14 @@ bfcalcs_reps<-function(modeltables,models,ml_type="bezier.corrected", reps=3){
   likes$model<-factor(likes$model, models) #and refactor
   mean.ml<-as.vector(by(likes[[ml_type]],likes$model,mean)) #take the means for each model
   sd.ml<-as.vector(by(likes[[ml_type]],likes$model,sd))
+  sem.ml<-as.vector(by(likes[[ml_type]],likes$model,sem))
     
   bmvalue<-mean.ml[which.max(mean.ml)] #get the best mean marg like
   lbf<-2*(mean.ml-bmvalue) #get the log bayes factors
   choice<-rank(-mean.ml) # make a choice column
   modelprob<-exp(lbf/2)/sum(exp(lbf/2)) # relative model probability
  
-  dfall<-data.frame(models,mean.ml,sd.ml,lbf,choice,modelprob) #put it all together
+  dfall<-data.frame(models,mean.ml,sd.ml,sem.ml,lbf,choice,modelprob) #put it all together
   
   #do permutation tests
   kmeans.p<-permKS(x = likes[[ml_type]], g = likes$model, method="exact.mc")$p.value
@@ -217,5 +218,8 @@ expectedTheta<-function(N,m,mu,n){
   #N = Ne, m = fraction of migrants,mu = mutation rate,n = number of demes 
   expected<- 1/(1 + 4*N*mu + (4*N*m*n/(n-1)))
 }
-  
+
+sem<-function(x){
+  sd(x)/sqrt(length(x))
+}
 

@@ -122,7 +122,7 @@ ggsave("stepstone_mtdnas_g10k_Nl4_m.1.pdf",argg)
 
 ```{r ibdloop2}
 ibds<-list()
-wd<-"./stepstone_mtdnas_g10k_Nl4_m.1/"
+wd<-"./zeta2_mtdnas_g10k_Nl6_m.0001/"
 for(m in list.files(path=wd,pattern="AllIndividuals_rep[0-9]+.nex"))
   
   {
@@ -132,8 +132,8 @@ for(m in list.files(path=wd,pattern="AllIndividuals_rep[0-9]+.nex"))
   dna <- as.DNAbin(nexus)
   gt<-sequence2gtypes(dna[2:201],strata=pop[-1])
   
-  pwtest<-pairwiseTest(gt,nrep = 0, stats="fst",quietly=T) # calculate pairwise Phist. change back to phist
-  phist_mtdna<-as.dist(pwtest$pair.mat$Fst) #grab the Phist table #change back to phist
+  pwtest<-pairwiseTest(gt,nrep = 0, stats="phist",quietly=T) # calculate pairwise Phist
+  phist_mtdna<-as.dist(pwtest$pair.mat$PHIst) #grab the Phist table
   phist_mtdna[which(is.na(phist_mtdna))]<-0 #set any NAs (due to identical hap freqs) in the table to zero
   ibd<-mantel.randtest(phist_mtdna,latdists) # calculate Mantel test
   ibds[[m]]<-ibd
@@ -153,7 +153,7 @@ greaterthan0<-length(which(mantelout$mantelRs>0))/100
 mantelhist<-ggplot(data=mantelout, aes(x=mantelRs,fill=p.value)) + geom_histogram(binwidth=0.05) + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Mantel's R. Proportion significant = ",sigp,", Proportion > 0 = ",greaterthan0,sep=""))
 
-ggsave("mantelhist_theta_stepstone_g10k_Nl4_m0.1.pdf",mantelhist)
+ggsave("mantelhist_zeta_g10k_Nl6_m0.0001.pdf",mantelhist)
 
 ```
 
