@@ -211,5 +211,11 @@ NeGivenMu<-function(x,mu){
   }
   return(x)
 }
+
+#Equation2 from Waples and Gaggioti (Cockerham and Weir, 1987,1993)
+expectedTheta<-function(N,m,mu,n){
+  #N = Ne, m = fraction of migrants,mu = mutation rate,n = number of demes 
+  expected<- 1/(1 + 4*N*mu + (4*N*m*n/(n-1)))
+}
   
 
