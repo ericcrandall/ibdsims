@@ -86,7 +86,7 @@ bfcalcs_reps<-function(modeltables,models,ml_type="bezier.corrected", reps=3){
   likes<-data.frame(matrix(nrow=reps*length(models),ncol=4))
   rowindex<-1
   for(r in 1:reps){
-   likes[rowindex:(r*length(models)),]<-cbind(modeltables[[r]])
+   likes[rowindex:(r*length(models)),]<-cbind(modeltables[[r]][,1:4])
    rowindex<-rowindex+length(models)
   }
   colnames(likes)<-c("model","thermodynamic","bezier.corrected","harmonic.mean")
