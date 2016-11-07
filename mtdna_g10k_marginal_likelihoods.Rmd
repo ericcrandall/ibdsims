@@ -135,10 +135,13 @@ for(sim in ls(pattern="bflist")){
 names(finalprobs)<-c("models",ls(pattern="bflist"))
 
 longprobs<-melt(finalprobs,id.vars = "models",variable.name = "Simulation",value.name="Model Probability")
+
 longprobs$models<-factor(longprobs$models, levels=models)
+
 longprobs$Simulation<-factor(longprobs$Simulation, levels=c("bflist_g10k_nl4_m0.01","bflist_g10k_nl5_m0.001","bflist_g10k_nl6_m0.0001","bflist_g10k_nl4_m0.1","bflist_g10k_nl5_m0.01","bflist_g10k_nl6_m0.001","bflist_singlepop"),labels=c("Ne = 10,000\nm = 0.01","Ne = 100,000\nm = 0.001","Ne = 1,000,000\nm = 0.0001","Ne = 10,000\nm = 0.1","Ne = 100,000\nm=0.01","Ne = 1,000,000\nm = 0.001","Ne = 1,000,000\nPanmixia"))
+
 my.cols<-brewer.pal(7,"RdYlBu")
 my.cols[7]<-"#7f7f7f"
-ggplot(data=longprobs,aes(x=Simulation,y=`Model Probability`)) + geom_bar(stat="identity",aes(fill=models)) + scale_fill_manual(values = my.cols, labels=c("k=10 Stepping-Stone, 28 parameter","k=5 Stepping-Stone, 13 parameter","k=10 Stepping-Stone, 2 parameter","k=5 Stepping-Stone, 2 parameter","k=10 Island, 2 parameter","k=5 Island, 2 parameter","Panmixia")) + theme(axis.title.x=element_blank())
+ggplot(data=longprobs,aes(x=Simulation,y=`Model Probability`)) + geom_bar(stat="identity",aes(fill=models)) + scale_fill_manual(values = my.cols, labels=c("k=10 Stepping-Stone, 28 parameter","k=5 Stepping-Stone, 13 parameter","k=10 Stepping-Stone, 2 parameter","k=5 Stepping-Stone, 2 parameter","k=10 Island, 2 parameter","k=5 Island, 2 parameter","k=1 Panmixia")) + theme(axis.title.x=element_blank())
 
 ```
