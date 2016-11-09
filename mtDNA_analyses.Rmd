@@ -130,7 +130,6 @@ mig<-0.1
 
 wd<-"./stepstone_mtdnas_g10k_Nl4_m.1/"
 for(m in list.files(path=wd,pattern="AllIndividuals_rep[0-9]+.nex"))
-  
   {
   print(m)
   #read in data and convert to gtypes
@@ -173,15 +172,13 @@ ggsave("mantelhist_stepstone_linearized_g10k_Nl4_m0.1.pdf",mantelhist)
    
    
 ```{r ibdloop3-Theta}
-outputs<-data.frame(model=character(),statistic=character(),Proportion_Sgnificant=numeric(),Rgreaterthan0=numeric(),Slopegreaterthan0=numeric())
-
 
 ibds<-list()
 slopes<-NULL
 sigmas<-NULL
-logne<-4
-mig<-0.1
-wd<-"./stepstone_mtdnas_g10k_Nl4_m.1/"
+logne<-6
+mig<-0.0001
+wd<-"./stepstone_mtdnas_g10k_Nl6_m.0001/"
 
 for(m in list.files(path=wd,pattern="*gen")) {
   print(m)
@@ -218,15 +215,16 @@ slopegreaterthan0<-length(which(mantelout$slopes>0))/100
 mantelhist<-ggplot(data=mantelout, aes(x=mantelRs,fill=p.value)) + geom_histogram(binwidth=0.05) + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Mantel's R. Proportion significant = ",sigp,", Proportion > 0 = ",Rgreaterthan0,sep=""))
 
-ggsave("mantelhist_stepstoneFST_g10k_Nl4_m0.1.pdf",mantelhist)
+ggsave("mantelhist_stepstoneFST_g10k_Nl6_m0.0001.pdf",mantelhist)
 
 slopehist<-mantelhist<-ggplot(data=mantelout, aes(x=slopes,fill=p.value)) + geom_histogram() + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Slopes. Proportion significant = ",sigp,", Proportion > 0 = ",slopegreaterthan0,sep=""))
 
-ggsave("slopehist_stepstoneFST_g10k_Nl4_m0.1.pdf",slopehist)
+ggsave("slopehist_stepstoneFST_g10k_Nl6_m0.0001.pdf",slopehist)
 
+outs<-c(paste("Ne=",10^logne,"; m=",mig,sep=""),"Theta",sigp,Rgreaterthan0,slopegreaterthan0,mean(sigmas,na.rm=T))
 
-outputs<-rbind(outputs,c(paste("Ne=",10^logne,"; m=",mig,sep=""),"Theta",sigp,Rgreaterthan0,slopegreaterthan0,mean(sigmas,na.rm=T)))
+outputs<-rbind(outputs,outs)
 
 sigmahist<-mantelhist<-ggplot(data=mantelout, aes(x=sigmas,fill=p.value)) + geom_histogram() + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Sigmas. Proportion significant = ",sigp,sep=""))
@@ -238,3 +236,60 @@ grid.arrange(grobs=outs,ncol=1,nrow=3)
 ggsave("mantelhist_stepstoneFST_g10k_Nl6_m.001.pdf",mantelhist)
 
 ```
+
+```{r}
+ibds<-list()
+slopes<-NULL
+sigmas<-NULL
+logne<-5
+mig<-0.01
+wd<-"./stepstone_mtdnas_g10k_Nl5_m.01/"
+
+for(m in list.files(path=wd,pattern="AllIndividuals_rep[0-9]+.nex")) {
+  print(m)
+  #read in data and convert to gtypes
+ nexus <- ape::read.nexus.data(paste(wd,m,sep=""))
+  dna <- as.DNAbin(nexus)
+  gt<-sequence2gtypes(dna[2:201],strata=pop[-1])
+  
+  pwtest<-pairwiseTest(gt,nrep = 0, stats="phist",quietly=T) # calculate pairwise theta
+  theta<-as.dist(pwtest$pair.mat$PHIst) #grab the Fst table
+  theta[which(is.na(theta))]<-0 #set any NAs (due to identical hap freqs) in the table to zero
+  theta<-(theta/(1-theta))
+  slope<-summary(lm(theta~latdists))$coefficients[2,1]
+  sigma<-sqrt(1/(4*10^logne*slope)) #sigma of Rousset 1997
+  ibd<-mantel.randtest(theta,latdists) # calculate Mantel test
+  
+  ibds[[m]]<-ibd
+  slopes[[m]]<-slope
+  sigmas[[m]]<-sigma
+  }
+
+mantelRs<-sapply(ibds,function(x) x$obs)
+names(mantelRs)<-NULL
+
+pvalues<-sapply(ibds,function(x) x$pvalue)
+names(pvalues)<-NULL
+
+mantelout<-as.data.frame(cbind(mantelRs,slopes,sigmas,pvalues))
+mantelout$p.value<-mantelout$pvalues<=0.05
+sigp<-length(which(mantelout$p.value))/100
+Rgreaterthan0<-length(which(mantelout$mantelRs>0))/100
+slopegreaterthan0<-length(which(mantelout$slopes>0))/100
+
+mantelhist<-ggplot(data=mantelout, aes(x=mantelRs,fill=p.value)) + geom_histogram(binwidth=0.05) + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
+  ggtitle(paste("Mantel's R. Proportion significant = ",sigp,", Proportion > 0 = ",Rgreaterthan0,sep=""))
+
+ggsave("mantelhist_stepstonePHIST_g10k_Nl5_m0.01.pdf",mantelhist)
+
+slopehist<-mantelhist<-ggplot(data=mantelout, aes(x=slopes,fill=p.value)) + geom_histogram() + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
+  ggtitle(paste("Slopes. Proportion significant = ",sigp,", Proportion > 0 = ",slopegreaterthan0,sep=""))
+
+ggsave("slopehist_stepstonePHIST_g10k_Nl5_m0.01.pdf",slopehist)
+
+outs<-c(paste("Ne=",10^logne,"; m=",mig,sep=""),"PHIst",sigp,Rgreaterthan0,slopegreaterthan0,mean(sigmas,na.rm=T))
+
+outputs<-rbind(outputs,outs)
+```
+
+
