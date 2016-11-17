@@ -285,7 +285,7 @@ ggsave("mantelhist_stepstonePHIST_g10k_Nl6_m0.0001.pdf",mantelhist)
 slopehist<-mantelhist<-ggplot(data=mantelout, aes(x=slopes,fill=p.value)) + geom_histogram() + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Slopes. Proportion significant = ",sigp,", Proportion > 0 = ",slopegreaterthan0,sep=""))
 
-
+ggsave("slopehist_stepstonePHIST_g10k_Nl6_m0.0001.pdf",slopehist)
 
 outs<-c(paste("Ne=",10^logne,"; m=",mig,sep=""),"PHIst",sigp,Rgreaterthan0,slopegreaterthan0,mean(sigmas,na.rm=T))
 
@@ -315,5 +315,3 @@ legtheme<-theme(axis.text = element_text(size = 14),
 
 h<-ggplot(data=fsts,mapping=aes(y=R_greater_than_0,x=Model,fill=Statistic)) + geom_bar(stat="identity",position="dodge")
 ```
-
-## Hi this is a change in this file
