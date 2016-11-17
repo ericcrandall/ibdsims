@@ -145,3 +145,5 @@ my.cols[7]<-"#7f7f7f"
 ggplot(data=longprobs,aes(x=Simulation,y=`Model Probability`)) + geom_bar(stat="identity",aes(fill=models)) + scale_fill_manual(values = my.cols, labels=c("k=10 Stepping-Stone, 28 parameter","k=5 Stepping-Stone, 13 parameter","k=10 Stepping-Stone, 2 parameter","k=5 Stepping-Stone, 2 parameter","k=10 Island, 2 parameter","k=5 Island, 2 parameter","k=1 Panmixia")) + theme(axis.title.x=element_blank())
 
 ```
+
+#blah blah blah
