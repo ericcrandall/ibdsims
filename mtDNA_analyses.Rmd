@@ -297,7 +297,7 @@ library(reshape2)
 fsts<-read.csv("modelFstouts.csv")
 names(fsts)<-c("outs","Model","Statistic","Proportion_Significant","R_greater_than_0","slope_greater_than_0","mean_sigma")
 levels(fsts$Model)<-gsub(";","\n",levels(fsts$Model))
-fsts$Model<-factor(fsts$Model, levels=c("Ne=10000\n m=0.01","Ne=1e+05\n m=0.001","Ne=1e+06\n m=1e-04","Ne=10000\n m=0.1","Ne=1e+05\n m=0.01","Ne=1e+06\n m=0.001"))
+fsts$Model<-factor(fsts$Model, levels=c("Ne=10000\n m=0.01","Ne=1e+05\n m=0.001","Ne=1e+06\n m=1e-04","Ne=10000\n m=0.1","Ne=1e+05\n m=0.01","Ne=1e+06\n m=0.001","Ne=1,000,000\n Panmixia"))
 levels(fsts$Model)[1]<-"Ne=10,000\n m=0.01"
 levels(fsts$Model)[2]<-"Ne=100,000\n m=0.001"
 levels(fsts$Model)[3]<-"Ne=1,000,000\n m=0.0001"
@@ -311,7 +311,10 @@ g<-ggplot(data=fsts,mapping=aes(y=Proportion_Significant,x=Model,fill=Statistic)
 legtheme<-theme(axis.text = element_text(size = 14),
                  axis.title = element_text(size = 16),
                  legend.text = element_text(size = 18),
-                 legend.title = element_text(size = 18))
+                 legend.title = element_text(size = 18),
+                axis.title.x = element_blank(),axis.title.y=element_blank())
 
 h<-ggplot(data=fsts,mapping=aes(y=R_greater_than_0,x=Model,fill=Statistic)) + geom_bar(stat="identity",position="dodge")
+
 ```
+
