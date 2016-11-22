@@ -1,5 +1,5 @@
 ---
-title: "mtdna_marginal_likelihood"
+title: "mtdna_marginal_likelihood_g10k_stepping-stone"
 author: "Eric Crandall"
 date: "November 4, 2016"
 output: html_document

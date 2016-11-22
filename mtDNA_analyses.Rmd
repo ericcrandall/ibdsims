@@ -176,9 +176,9 @@ ggsave("mantelhist_stepstone_linearized_g10k_Nl4_m0.1.pdf",mantelhist)
 ibds<-list()
 slopes<-NULL
 sigmas<-NULL
-logne<-6
-mig<-0.0001
-wd<-"./stepstone_mtdnas_g10k_Nl6_m.0001/"
+logne<-4
+mig<-0.01
+wd<-"./zeta2_mtdnas_g10k_Nl4_m.01/"
 
 for(m in list.files(path=wd,pattern="*gen")) {
   print(m)
@@ -215,12 +215,12 @@ slopegreaterthan0<-length(which(mantelout$slopes>0))/100
 mantelhist<-ggplot(data=mantelout, aes(x=mantelRs,fill=p.value)) + geom_histogram(binwidth=0.05) + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Mantel's R. Proportion significant = ",sigp,", Proportion > 0 = ",Rgreaterthan0,sep=""))
 
-ggsave("mantelhist_stepstoneFST_g10k_Nl6_m0.0001.pdf",mantelhist)
+ggsave("mantelhist_zeta2FST_g10k_Nl4_m0.1.pdf",mantelhist)
 
 slopehist<-mantelhist<-ggplot(data=mantelout, aes(x=slopes,fill=p.value)) + geom_histogram() + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Slopes. Proportion significant = ",sigp,", Proportion > 0 = ",slopegreaterthan0,sep=""))
 
-ggsave("slopehist_stepstoneFST_g10k_Nl6_m0.0001.pdf",slopehist)
+ggsave("slopehist_zeta2FST_g10k_Nl4_m0.01.pdf",slopehist)
 
 outs<-c(paste("Ne=",10^logne,"; m=",mig,sep=""),"Theta",sigp,Rgreaterthan0,slopegreaterthan0,mean(sigmas,na.rm=T))
 
@@ -229,11 +229,16 @@ outputs<-rbind(outputs,outs)
 sigmahist<-mantelhist<-ggplot(data=mantelout, aes(x=sigmas,fill=p.value)) + geom_histogram() + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Sigmas. Proportion significant = ",sigp,sep=""))
 
+
+
+
+
+
 outs<-list(mantelhist,slopehist)
 
 grid.arrange(grobs=outs,ncol=1,nrow=3)
 
-ggsave("mantelhist_stepstoneFST_g10k_Nl6_m.001.pdf",mantelhist)
+ggsave("mantelhist_zeta2FST_g10k_Nl4_m.01.pdf",mantelhist)
 
 ```
 
