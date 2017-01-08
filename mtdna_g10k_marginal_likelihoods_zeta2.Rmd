@@ -21,7 +21,7 @@ models<-c("10stepping.stone","5stepping.stone","10stepping.stone1","5stepping.st
 
 ### Replicate 1 of mtDNA panmixia with Ne=1,000,000
 ```{r mtdna_panmixia, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_singlepop1"
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_singlepop_g10k"
 bflist_singlepop<-list()
 for(rep in 1:10){
   wd2<-file.path(wd,paste("simrep",rep,sep=""))
@@ -29,7 +29,7 @@ for(rep in 1:10){
   bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
   bfsum2<-bfcalcs_reps(bftable, models=models, reps=2) 
   bflist_singlepop[rep]<-bfsum2[1]
-  print("Final Result - 2 reps") 
+  print("Final Result - 3 reps") 
   print(rep)
   print(bfsum2)
 }

@@ -151,7 +151,7 @@ usertree=RANDOMTREE
 #
 # input file location
 #   Syntax infile=FILEPATH
-infile=../../../../ibddata/singlepop_mtdna_g10k/singlepop_mtdna_AllIndividuals_rep1.nex
+infile=../../../../ibddata/stepstone_mtdna_g10k_Nl6_m0.0001/stepstone_mtdna_AllIndividuals_rep1.nex
 # Random number seed specification
 #   Syntax random-seed=<AUTO | OWN:< seedfile | value >
 #      AUTO           uses computer system clock to generate seed
