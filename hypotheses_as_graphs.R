@@ -21,9 +21,9 @@ edges2<-rbind(edges,edges[,c(2,1)])
 #make the n-island model
 island<-graph.data.frame(edges2,nodes,directed=T)
 
-circle<-layout_in_circle(island,nodes)
+circle<-layout_in_circle(island,order=c(11,10,9,8,7,6,5,4,3,2,1,14,13,12))
 
-plot(island,layout=circle)
+plot(island,layout=circle, edge.arrow.size=0.4, edge.curved=0.3, vertex.label=V(island)$label, vertex.color=V(island)$sector, vertex.color="black")
 
 
 #make a stepping-stone model
