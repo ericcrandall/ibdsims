@@ -72,11 +72,11 @@ plots<-list()
 fits<-list()
 ibds<-list()
 
-for(m in list.files(path="./stepstone_mtdnas_g10k_Nl4_m.1",pattern="AllIndividuals_rep[0-9]+.nex"))
+for(m in list.files(path="./stepstone_mtdnas_g10k_Nl4_m.001",pattern="AllIndividuals_rep[0-9]+.nex"))
   {
   
   #read in data and convert to gtypes
-  nexus <- ape::read.nexus.data(paste("./stepstone_mtdnas_g10k_Nl4_m.1/",m,sep=""))
+  nexus <- ape::read.nexus.data(paste("./stepstone_mtdnas_g10k_Nl4_m.001/",m,sep=""))
   dna <- as.DNAbin(nexus)
   gt<-sequence2gtypes(dna[2:201],strata=pop[-1])
   
@@ -139,7 +139,7 @@ for(m in list.files(path=wd,pattern="AllIndividuals_rep[0-9]+.nex"))
   
   pwtest<-pairwiseTest(gt,nrep = 0, stats="phist",quietly=T) # calculate pairwise Phist
   phist_mtdna<-as.dist(pwtest$pair.mat$PHIst) #grab the Phist table
-  phist_mtdna<-(phist_mtdna)/(1-phist_mtdna) #linearize it
+  #phist_mtdna<-(phist_mtdna)/(1-phist_mtdna) #linearize it
   phist_mtdna[which(is.na(phist_mtdna))]<-0 #set any NAs (due to identical hap freqs) in the table to zero
   phist_mtdna<-(phist_mtdna)/(1-phist_mtdna) #linearize it
   
@@ -247,8 +247,8 @@ ibds<-list()
 slopes<-NULL
 sigmas<-NULL
 logne<-6
-mig<-0.0001
-wd<-"./stepstone_mtdnas_g10k_Nl6_m.0001/"
+mig<-0.00001
+wd<-"./stepstone_mtdnas_g10k_Nl6_m.00001/"
 
 for(m in list.files(path=wd,pattern="AllIndividuals_rep[0-9]+.nex")) {
   print(m)
@@ -260,7 +260,9 @@ for(m in list.files(path=wd,pattern="AllIndividuals_rep[0-9]+.nex")) {
   pwtest<-pairwiseTest(gt,nrep = 0, stats="phist",quietly=T) # calculate pairwise theta
   theta<-as.dist(pwtest$pair.mat$PHIst) #grab the Fst table
   theta[which(is.na(theta))]<-0 #set any NAs (due to identical hap freqs) in the table to zero
+   # #set any infinite (due to nonoverlapping hap freqs) in the table to zero
   theta<-(theta/(1-theta))
+  theta[which(is.infinite(theta))]<-1
   slope<-summary(lm(theta~latdists))$coefficients[2,1]
   sigma<-sqrt(1/(4*10^logne*slope)) #sigma of Rousset 1997
   ibd<-mantel.randtest(theta,latdists) # calculate Mantel test
@@ -285,12 +287,12 @@ slopegreaterthan0<-length(which(mantelout$slopes>0))/100
 mantelhist<-ggplot(data=mantelout, aes(x=mantelRs,fill=p.value)) + geom_histogram(binwidth=0.05) + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Mantel's R. Proportion significant = ",sigp,", Proportion > 0 = ",Rgreaterthan0,sep=""))
 
-ggsave("mantelhist_stepstonePHIST_g10k_Nl6_m0.0001.pdf",mantelhist)
+ggsave("mantelhist_stepstonePHIST_g10k_Nl6_m0.00001.pdf",mantelhist)
 
 slopehist<-mantelhist<-ggplot(data=mantelout, aes(x=slopes,fill=p.value)) + geom_histogram() + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Slopes. Proportion significant = ",sigp,", Proportion > 0 = ",slopegreaterthan0,sep=""))
 
-ggsave("slopehist_stepstonePHIST_g10k_Nl6_m0.0001.pdf",slopehist)
+ggsave("slopehist_stepstonePHIST_g10k_Nl6_m0.00001.pdf",slopehist)
 
 outs<-c(paste("Ne=",10^logne,"; m=",mig,sep=""),"PHIst",sigp,Rgreaterthan0,slopegreaterthan0,mean(sigmas,na.rm=T))
 
