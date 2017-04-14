@@ -176,9 +176,9 @@ ggsave("mantelhist_stepstone_linearized_g10k_Nl4_m0.1.pdf",mantelhist)
 ibds<-list()
 slopes<-NULL
 sigmas<-NULL
-logne<-4
-mig<-0.01
-wd<-"./zeta2_mtdnas_g10k_Nl4_m.01/"
+logne<-6
+mig<-0.00001
+wd<-"./singlepop_mtdna_g10k/"
 
 for(m in list.files(path=wd,pattern="*gen")) {
   print(m)
@@ -215,12 +215,12 @@ slopegreaterthan0<-length(which(mantelout$slopes>0))/100
 mantelhist<-ggplot(data=mantelout, aes(x=mantelRs,fill=p.value)) + geom_histogram(binwidth=0.05) + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Mantel's R. Proportion significant = ",sigp,", Proportion > 0 = ",Rgreaterthan0,sep=""))
 
-ggsave("mantelhist_zeta2FST_g10k_Nl4_m0.1.pdf",mantelhist)
+ggsave("mantelhist_stepstoneFST_g10k_Nl6_m0.00001.pdf",mantelhist)
 
 slopehist<-mantelhist<-ggplot(data=mantelout, aes(x=slopes,fill=p.value)) + geom_histogram() + geom_vline(xintercept=0,color="red") + scale_fill_manual(values=c("grey50","red")) + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank())+
   ggtitle(paste("Slopes. Proportion significant = ",sigp,", Proportion > 0 = ",slopegreaterthan0,sep=""))
 
-ggsave("slopehist_zeta2FST_g10k_Nl4_m0.01.pdf",slopehist)
+ggsave("slopehist_stepstone2FST_g10k_Nl6_m0.00001.pdf",slopehist)
 
 outs<-c(paste("Ne=",10^logne,"; m=",mig,sep=""),"Theta",sigp,Rgreaterthan0,slopegreaterthan0,mean(sigmas,na.rm=T))
 
@@ -248,7 +248,7 @@ slopes<-NULL
 sigmas<-NULL
 logne<-6
 mig<-0.00001
-wd<-"./stepstone_mtdnas_g10k_Nl6_m.00001/"
+wd<-"./singlepop_mtdna_g10k/"
 
 for(m in list.files(path=wd,pattern="AllIndividuals_rep[0-9]+.nex")) {
   print(m)
@@ -304,13 +304,18 @@ library(reshape2)
 fsts<-read.csv("modelFstouts.csv")
 names(fsts)<-c("outs","Model","Statistic","Proportion_Significant","R_greater_than_0","slope_greater_than_0","mean_sigma")
 levels(fsts$Model)<-gsub(";","\n",levels(fsts$Model))
-fsts$Model<-factor(fsts$Model, levels=c("Ne=10000\n m=0.01","Ne=1e+05\n m=0.001","Ne=1e+06\n m=1e-04","Ne=10000\n m=0.1","Ne=1e+05\n m=0.01","Ne=1e+06\n m=0.001","Ne=1,000,000\n Panmixia"))
-levels(fsts$Model)[1]<-"Ne=10,000\n m=0.01"
-levels(fsts$Model)[2]<-"Ne=100,000\n m=0.001"
-levels(fsts$Model)[3]<-"Ne=1,000,000\n m=0.0001"
-levels(fsts$Model)[4]<-"Ne=10,000\n m=0.1"
-levels(fsts$Model)[5]<-"Ne=100,000\n m=0.01"
-levels(fsts$Model)[6]<-"Ne=1,000,000\n m=0.001"
+fsts$Model<-factor(fsts$Model, levels=c("Ne=10,000\n m=0.001","Ne=100,000\n m=0.0001","Ne=1,000,000\n m=0.00001","Ne=10,000\n m=0.01","Ne=100,000\n m=0.001","Ne=1,000,000\n m=0.0001","Ne=10,000\n m=0.1","Ne=100,000\n m=0.01","Ne=1,000,000\n m=0.001","Ne=1,000,000\n Panmixia"))
+
+#levels(fsts$Model)[1]<-"Ne=10,000\n m=0.001"
+#levels(fsts$Model)[2]<-"Ne=100,000\n m=0.0001"
+#levels(fsts$Model)[3]<-"Ne=1,000,000\n m=0.00001"
+#levels(fsts$Model)[4]<-"Ne=10,000\n m=0.01"
+#levels(fsts$Model)[5]<-"Ne=100,000\n m=0.001"
+#levels(fsts$Model)[6]<-"Ne=1,000,000\n m=0.0001"
+#levels(fsts$Model)[7]<-"Ne=10,000\n m=0.1"
+#levels(fsts$Model)[8]<-"Ne=100,000\n m=0.01"
+#levels(fsts$Model)[9]<-"Ne=1,000,000\n m=0.001"
+#levels(fsts$Model)[10]<-"Ne=1,000,000;\n Panmixia"
 
 
 g<-ggplot(data=fsts,mapping=aes(y=Proportion_Significant,x=Model,fill=Statistic)) + geom_bar(stat="identity",position="dodge")
@@ -322,6 +327,10 @@ legtheme<-theme(axis.text = element_text(size = 14),
                 axis.title.x = element_blank(),axis.title.y=element_blank())
 
 h<-ggplot(data=fsts,mapping=aes(y=R_greater_than_0,x=Model,fill=Statistic)) + geom_bar(stat="identity",position="dodge")
+
+
+phists<-fsts[fsts$Statistic=="PHIst",]
+g<-ggplot(data=phists,mapping=aes(y=Proportion_Significant,x=Model,fill=Statistic)) + geom_bar(stat="identity",position="dodge")
 
 ```
 

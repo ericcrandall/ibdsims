@@ -63,6 +63,19 @@ for(r in 1:10){
 }
 ```
 
+### Replicates of mtDNA stepping stone model with m=0.001 and Ne = 10,000 (Nm=10)
+```{r nl4_m0.001, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_g10k_nl4_m0.001"
+bflist_g10k_nl4_m0.001<-list()
+for(r in 1:10){
+  wd2<-file.path(wd,paste("simrep",r,sep=""))
+  marglikes<-migrate_harvester(wd=wd2,models=models,multilocus = F,quiet = T)
+  bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+  bflist_g10k_nl4_m0.001[r]<-bftable
+  print(r)
+  print(bftable)
+}
+```
 
 
 ### Replicates of mtDNA stepping stone model with m=0.01 and Ne = 100,000 (Nm=1,000)
@@ -88,6 +101,20 @@ for(r in 1:10){
   marglikes<-migrate_harvester(wd=wd2,models=models,multilocus = F,quiet = T)
   bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
   bflist_g10k_nl5_m0.001[r]<-bftable
+  print(r)
+  print(bftable)
+}
+```
+
+### Replicates of mtDNA stepping stone model with m=0.0001 and Ne = 100,000 (Nm=10)
+```{r nl5_m0.0001, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_g10k_nl5_m0.0001"
+bflist_g10k_nl5_m0.0001<-list()
+for(r in 1:10){
+  wd2<-file.path(wd,paste("simrep",r,sep=""))
+  marglikes<-migrate_harvester(wd=wd2,models=models,multilocus = F,quiet = T)
+  bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+  bflist_g10k_nl5_m0.0001[r]<-bftable
   print(r)
   print(bftable)
 }
@@ -121,6 +148,20 @@ for(r in 1:10){
 }
 ```
 
+### Replicates of mtDNA stepping stone model with m=0.00001 and Ne = 1,000,000 (Nm=10)
+```{r nl6_m0.00001, echo=F}
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_g10k_nl6_m0.00001"
+bflist_g10k_nl6_m0.00001<-list()
+for(r in 1:10){
+  wd2<-file.path(wd,paste("simrep",r,sep=""))
+  marglikes<-migrate_harvester(wd=wd2,models=models,multilocus = F,quiet = T)
+  bftable<-lapply(marglikes,bfcalcs,ml="bezier.corrected")
+  bflist_g10k_nl6_m0.00001[r]<-bftable
+  print(r)
+  print(bftable)
+}
+```
+
 ### Taking the means of the model probabilities across replicates
 
 ```{r modelprobs}
@@ -139,7 +180,7 @@ longprobs<-melt(finalprobs,id.vars = "models",variable.name = "Simulation",value
 
 longprobs$models<-factor(longprobs$models, levels=models)
 
-longprobs$Simulation<-factor(longprobs$Simulation, levels=c("bflist_g10k_nl4_m0.01","bflist_g10k_nl5_m0.001","bflist_g10k_nl6_m0.0001","bflist_g10k_nl4_m0.1","bflist_g10k_nl5_m0.01","bflist_g10k_nl6_m0.001","bflist_singlepop"),labels=c("Ne = 10,000\nm = 0.01","Ne = 100,000\nm = 0.001","Ne = 1,000,000\nm = 0.0001","Ne = 10,000\nm = 0.1","Ne = 100,000\nm=0.01","Ne = 1,000,000\nm = 0.001","Ne = 1,000,000\nPanmixia"))
+longprobs$Simulation<-factor(longprobs$Simulation, levels=c("bflist_g10k_nl4_m0.001","bflist_g10k_nl5_m0.0001","bflist_g10k_nl6_m0.00001","bflist_g10k_nl4_m0.01","bflist_g10k_nl5_m0.001","bflist_g10k_nl6_m0.0001","bflist_g10k_nl4_m0.1","bflist_g10k_nl5_m0.01","bflist_g10k_nl6_m0.001","bflist_singlepop"),labels=c("Ne = 10,000\nm = 0.001","Ne = 100,000\nm = 0.0001","Ne = 1,000,000\nm = 0.00001","Ne = 10,000\nm = 0.01","Ne = 100,000\nm = 0.001","Ne = 1,000,000\nm = 0.0001","Ne = 10,000\nm = 0.1","Ne = 100,000\nm=0.01","Ne = 1,000,000\nm = 0.001","Ne = 1,000,000\nPanmixia"))
 
 my.cols<-brewer.pal(7,"RdYlBu")
 my.cols[7]<-"#7f7f7f"
