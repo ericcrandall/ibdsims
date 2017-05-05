@@ -21,7 +21,7 @@ library("gridExtra")
 ```{r, echo=F}
 #https://arundurvasula.wordpress.com/2016/02/24/haplotype-networks-in-r/
 
-c <- ape::read.nexus.data("./stepstone_mtdnas_g10k_Nl4_m.1/stepstone_mtdna_AllIndividuals_rep1.nex")
+c <- ape::read.nexus.data("./stepstone_mtdnas_g10k_Nl6_m.0001/stepstone_mtdna_AllIndividuals_rep1.nex")
 d <- as.DNAbin(c)
 e <- dist.dna(d)
 h <- pegas::haplotype(d)
@@ -31,8 +31,10 @@ pop<-c(1,rep(1,20), rep(2,20), rep(3,20), rep(4,20), rep(5,20), rep(6,20), rep(7
 net <- pegas::haploNet(h)
 i<-stack(setNames(attr(h, "index"), rownames(h)))
 ind.hap<- table(hap=i$ind, pop=pop)
-plot(net, size=attr(net, "freq"), scale.ratio=0.2, pie=ind.hap,legend=F, labels=F)
-legend("topleft", colnames(ind.hap), col=rainbow(ncol(ind.hap)), pch=19, ncol=2)
+test<-graph_from_data_frame(net[,],directed=F)
+plot(test)
+#plot(net, size=attr(net, "freq"), scale.ratio=0.2, pie=ind.hap,legend=F, labels=F)
+#legend("topleft", colnames(ind.hap), col=rainbow(ncol(ind.hap)), pch=19, ncol=2)
 ```
 
 # Converting between data types
