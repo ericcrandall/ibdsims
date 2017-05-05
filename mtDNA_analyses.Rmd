@@ -328,6 +328,8 @@ legtheme<-theme(axis.text = element_text(size = 14),
 
 h<-ggplot(data=fsts,mapping=aes(y=R_greater_than_0,x=Model,fill=Statistic)) + geom_bar(stat="identity",position="dodge")
 
+k<-ggplot(data=fsts,mapping=aes(y=Proportion_Significant,x=Model,fill=Statistic)) + geom_bar(stat="identity",position="dodge") + scale_fill_manual(values=c("grey","black"))
+
 
 phists<-fsts[fsts$Statistic=="PHIst",]
 g<-ggplot(data=phists,mapping=aes(y=Proportion_Significant,x=Model,fill=Statistic)) + geom_bar(stat="identity",position="dodge")

@@ -22,17 +22,18 @@ edges2<-rbind(edges,edges[,c(2,1)])
 island<-graph.data.frame(edges2,nodes,directed=T)
 
 circle<-layout_in_circle(island,order=c(11,10,9,8,7,6,5,4,3,2,1,14,13,12))
+hi_islands<-as.matrix(nodes[,c(7,6)])
 
-plot(island,layout=circle, edge.arrow.size=0.4, edge.curved=0.3, vertex.label=V(island)$label, vertex.color=V(island)$sector, vertex.color="black")
+plot(island,layout=hi_islands, edge.arrow.size=0.05, edge.curved=0.3, vertex.label=V(island)$label, vertex.color=V(island)$sector, vertex.size=8,vertex.label.cex=0.7,vertex.shape="csquare")
 
 
 #make a stepping-stone model
 stepstone<-graph.data.frame(stepedges,nodes,directed=T)
-V(stepstone)$vertex.color<-colrs[V(stepstone)$sector]
 
-plot(stepstone,layout=circle, edge.arrow.size=0.4, edge.curved=0.3, vertex.label=V(stepstone)$island, vertex.color=V(stepstone)$sector)
+plot(stepstone,layout=hi_islands, edge.arrow.size=0.05, edge.curved=0.3, vertex.label=V(stepstone)$label, vertex.color=V(stepstone)$sector, edge.color="black",vertex.label.cex=0.7,vertex.size=8)
+
+plot(stepstone,layout=hi_islands, edge.arrow.size=0.05, edge.curved=0.3, vertex.label=V(stepstone)$label, vertex.color=V(stepstone)$sector, edge.color="gray",vertex.label.cex=0.7,vertex.size=8, vertex.shape="csquare")
 
 #make high-low
 
-hilo<-contract(stepstone,mapping=c(1,1,1,1,2,2,2,2,2,2,2,2,2,2))
-plot(hilo)
+
