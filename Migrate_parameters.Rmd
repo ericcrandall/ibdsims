@@ -18,7 +18,7 @@ models<-c("panmixia","5island","5stepping.stone","5stepping.stone1","10island","
 
 
 ```{r, echo=F}
-wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_g10k_nl4_m0.01"
+wd<-"/Users/eric/Datasets/simulations/ibdsim/migrate_mtdna_g10k_nl4_m0.001"
 setwd(wd)
 bestmodel<-"10stepping.stone1"
 all_nm<-list()
@@ -114,9 +114,9 @@ setwd(wd)
     labs(title=element_blank(), x="Parameter", y="Effective Female Migrants per Generation") + coord_flip()
 violin_nm
  
-  pdf(file="Nm_violin.pdf", width=8.5, height=11, paper="letter") 
- print(violin_nm)
- dev.off()
+#  pdf(file="Nm_violin.pdf", width=8.5, height=11, paper="letter") 
+# print(violin_nm)
+# dev.off()
  
  #make a violin plot of Ne in ggplot2!
   all_ne<-as.data.frame(all_ne)
@@ -131,14 +131,65 @@ violin_nm
  violin_ne
  
  
- pdf(file="Ne_violin.pdf", width=8.5, height=11, paper="letter") 
- print(violin_ne)
- dev.off()
+ #pdf(file="Ne_violin.pdf", width=8.5, height=11, paper="letter") 
+ #print(violin_ne)
+ #dev.off()
 ```
 
+Load all runs, saving each into an appropriate object
+
+```{r}
+longNe$set<-"nl4_m0.001"
+longNm$set<-"nl4_m0.001"
+
+longNe_all<-rbind(longNe_all,longNe)
+longNm_all<-rbind(longNm_all,longNm)
+
+
+
+```
+
+```{r}
+
+longNm_all$set<-factor(longNm_all$set,levels=c("nl4_m0.001","nl5_m0.0001","nl6_m0.00001","nl4_m0.01",  "nl5_m0.001","nl6_m0.0001","nl4_m0.1","nl5_m0.01","nl6_m0.001"))
+
+truevalues<-data.frame(set=c("nl4_m0.001","nl5_m0.0001","nl6_m0.00001","nl4_m0.01",  "nl5_m0.001","nl6_m0.0001","nl4_m0.1","nl5_m0.01","nl6_m0.001"),value=c(10,10,10,100,100,100,1000,1000,1000))
+
+violin_nm<-ggplot(longNm_all, (aes(x=set, y=Nm))) + geom_violin()  +
+  geom_point(data=truevalues,aes(x=set,y=value),size=5,color="red") +
+    scale_y_log10(breaks=c(0.00001,0.0001,0.001,0.01,0.1,1,10,100,1000,10000,100000),  labels=c("0.00001","0.0001","0.001","0.01","0.1","1","10","100","1,000","10,000","100,000")) +
+    scale_x_discrete(labels=c("Ne = 10,000\nm = 0.001","Ne = 100,000\nm = 0.0001","Ne = 1,000,000\nm = 0.00001","Ne = 10,000\nm = 0.01","Ne = 100,000\nm = 0.001","Ne = 1,000,000\nm = 0.0001","Ne = 10,000\nm = 0.1","Ne = 100,000\nm=0.01","Ne = 1,000,000\nm = 0.001")) +
+    labs(y="Effective Female Migrants per Generation") +
+  theme(axis.title.x=element_blank(), axis.text.x=element_text(size=7))
+violin_nm
  
 
+longNe_all$set<-factor(longNe_all$set,levels=c("nl4_m0.001","nl5_m0.0001","nl6_m0.00001","nl4_m0.01",  "nl5_m0.001","nl6_m0.0001","nl4_m0.1","nl5_m0.01","nl6_m0.001"))
 
+truevalues_ne<-data.frame(set=c("nl4_m0.001","nl5_m0.0001","nl6_m0.00001","nl4_m0.01",  "nl5_m0.001","nl6_m0.0001","nl4_m0.1","nl5_m0.01","nl6_m0.001"),value=c(10000,100000,1000000,10000,100000,1000000,10000,100000,1000000))
+
+
+ violin_ne<-ggplot(longNe_all, (aes(x=set, y=Ne))) + geom_violin()  + 
+   geom_point(data=truevalues_ne,aes(x=set,y=value),size=5,color="red") +
+    scale_y_log10(breaks=c(0.00001,0.0001,0.001,0.01,0.1,1,10,100,1000,10000,100000,1000000), labels=c("0.00001","0.0001","0.001","0.01","0.1","1","10","100","1,000","10,000","100,000","1,000,000")) +
+   scale_x_discrete(labels=c("Ne = 10,000\nm = 0.001","Ne = 100,000\nm = 0.0001","Ne = 1,000,000\nm = 0.00001","Ne = 10,000\nm = 0.01","Ne = 100,000\nm = 0.001","Ne = 1,000,000\nm = 0.0001","Ne = 10,000\nm = 0.1","Ne = 100,000\nm=0.01","Ne = 1,000,000\nm = 0.001")) +
+   theme(axis.title.x=element_blank(), axis.text.x=element_text(size=7)) +
+    labs(y="Effective Population Size") 
+ violin_ne
+ 
+ #library(gridExtra)
+ #grid.arrange(violin_nm,violin_ne,nrow=2)
+ 
+ 
+ 
+ violins<-ggplot() + geom_violin(data=longNm_all, (aes(x=set, y=Nm)))  + geom_violin(data=longNe_all, aes(x=set,y=Ne)) +
+    scale_y_log10(breaks=c(0.00001,0.0001,0.001,0.01,0.1,1,10,100,1000,10000,100000,1000000),  labels=c("0.00001","0.0001","0.001","0.01","0.1","1","10","100","1,000","10,000","100,000","1,000,000"), sec.axis=dup_axis(trans=NULL,name="Effective Population Size")) +
+    scale_x_discrete(labels=c("Ne = 10,000\nm = 0.001","Ne = 100,000\nm = 0.0001","Ne = 1,000,000\nm = 0.00001","Ne = 10,000\nm = 0.01","Ne = 100,000\nm = 0.001","Ne = 1,000,000\nm = 0.0001","Ne = 10,000\nm = 0.1","Ne = 100,000\nm=0.01","Ne = 1,000,000\nm = 0.001")) +
+    labs(y="Effective Female Migrants per Generation") +
+  theme(axis.title.x=element_blank(), axis.text.x=element_text(size=7))
+violin_nm
+```
+ 
 #save(allstatstable,file="nl5_g25k_m0.001_bestmodel_stats_v.Rdata")
 sink(file="nl5_g25k_m0.001_bestmodel_stats.txt",type="output")
 allstatstable

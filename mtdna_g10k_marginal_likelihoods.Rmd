@@ -186,7 +186,7 @@ longprobs$Simulation<-factor(longprobs$Simulation, levels=c("bflist_g10k_nl4_m0.
 
 my.cols<-brewer.pal(7,"RdYlBu")
 my.cols[7]<-"#7f7f7f"
-ggplot(data=longprobs,aes(x=Simulation,y=`Model Probability`)) + geom_bar(stat="identity",aes(fill=models)) + scale_fill_manual(values = my.cols, labels=c("k=10 Stepping-Stone, 28 parameter","k=10 Stepping-Stone, 2 parameter","k=5 Stepping-Stone, 13 parameter","k=5 Stepping-Stone, 2 parameter","k=10 Island, 2 parameter","k=5 Island, 2 parameter","k=1 Panmixia"),guide = guide_legend(title = "Migrate Models")) + theme(axis.title.x=element_blank(), legend.text=element_text(size=15), legend.title=element_text(size=18), axis.text.y=element_text(size=14), axis.title.y=element_text(size=14))
+ggplot(data=longprobs,aes(x=Simulation,y=`Model Probability`)) + geom_bar(stat="identity",aes(fill=models)) + scale_fill_manual(values = my.cols, labels=c("k=10 Stepping-Stone, 28 parameter","k=10 Stepping-Stone, 2 parameter","k=5 Stepping-Stone, 13 parameter","k=5 Stepping-Stone, 2 parameter","k=10 Island, 2 parameter","k=5 Island, 2 parameter","k=1 Panmixia"),guide = guide_legend(title = "Migrate Models")) + theme(axis.title.x=element_blank(), legend.text=element_text(size=15), legend.title=element_text(size=18), axis.text.y=element_text(size=14), axis.title.y=element_text(size=14), axis.text.x=element_text(angle=45,hjust=1))
 
 ```
 ```{r}
